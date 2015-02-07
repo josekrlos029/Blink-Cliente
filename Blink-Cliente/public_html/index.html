@@ -61,7 +61,7 @@ and open the template in the editor.
 //                $("#contHora").hide();
 //                FB.init({appId: "1428385527442767", nativeInterface: CDV.FB, useCachedDialogs: false});
 
-                $("#mapa").height(200);
+                $("#mapa").height($("#mainPage").height() - $("#btnPopupDiligencia").height());
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var lat = position.coords.latitude;
                     var lng = position.coords.longitude;
@@ -303,10 +303,16 @@ and open the template in the editor.
                     <li data-icon="power"><a data-ajax="false" id="cerrar" href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
                 </ul>
             </div><!-- /panel -->
-            <div role="main" class="ui-content">
+            <div role="main" id="mainPage" class="ui-content" style="padding: 0; margin: 0;">
                 <div id="mapa" style="width: 100%"></div>
-                <hr>
-                <h3>Nuestros Servicios</h3>
+                <a href="#popupDiligencia" id="btnPopupDiligencia" data-rel="popup"  style="background-color: #20c05c; color: white; text-decoration: none;text-shadow: none" class="ui-btn ui-shadow ui-corner-all ui-icon-check ui-btn-icon-right boton">Solicitar Servicio</a>
+                
+                
+                <a href="#popupLogin" id="btnPopup" hidden data-rel="popup"  style="background-color: #84aa1f; color: white; text-decoration: none;text-shadow: none" class="ui-btn ui-shadow ui-corner-all ui-icon-check ui-btn-icon-right boton">Aceptar</a>
+                 
+                <div data-role="popup" id="popupDiligencia" data-overlay-theme="b" data-theme="b" class="ui-corner-all" data-dismissible="false">
+                    
+                    <h3>Nuestros Servicios</h3>
                 <form>
                     <fieldset data-role="controlgroup">
                         <legend>*Escoge tu Servicio:</legend>
@@ -343,10 +349,9 @@ and open the template in the editor.
                 </div> 
                 <center><h4>Solicita tu mensajero, llegará al instante</h4></center>
                 <a id="btnEnvio" style="background-color: #84aa1f; color: white; text-decoration: none;text-shadow: none" href="#" onclick="comprobarServicio();" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-check ui-btn-icon-right">Solicitar Mensajero</a>
+                    
+                </div>
                 
-                <a href="#popupLogin" id="btnPopup" hidden data-rel="popup" data-position-to="window" data-transition="flow" style="background-color: #84aa1f; color: white; text-decoration: none;text-shadow: none" class="ui-btn ui-shadow ui-corner-all ui-icon-check ui-btn-icon-right boton">Aceptar</a>
-                
-
                 <div data-role="popup" id="popupLogin" data-overlay-theme="b" data-theme="b" class="ui-corner-all" data-dismissible="false">
 
                     <div style="padding:10px 20px;">
