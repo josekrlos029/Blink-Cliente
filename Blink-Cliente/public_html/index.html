@@ -18,7 +18,7 @@ and open the template in the editor.
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
         <script src="js/jquery.liveSearch.js"></script>
         <script src="js/app.js"></script>
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBOANqhrn5i6-jYE9XqXyaVClI0NvGLOQw&sensor=true&libraries=geometry"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBAibBz2Z0H3jFKhC9zguoL9jNU4fwlQGw&sensor=true&libraries=geometry"></script>
         <script src="phonegap.js" type="text/javascript"></script>
         <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>   
         <script src="cdv-plugin-fb-connect.js"></script>
@@ -56,9 +56,9 @@ and open the template in the editor.
                     textonly: textonly,
                     html: html
                 });
-                $("#contFecha").hide();
-                $("#contHora").hide();
-                FB.init({appId: "1428385527442767", nativeInterface: CDV.FB, useCachedDialogs: false});
+//                $("#contFecha").hide();
+//                $("#contHora").hide();
+//                FB.init({appId: "1428385527442767", nativeInterface: CDV.FB, useCachedDialogs: false});
 
                 $("#mapa").height(200);
                 navigator.geolocation.getCurrentPosition(function(position) {
@@ -247,16 +247,7 @@ and open the template in the editor.
                 });
             }
             
-            function mostrarFecha(){
-                if($("#tipo").val()== "p"){
-                    $("#contFecha").show();
-                    $("#contHora").show();
-                }else{
-                    $("#contFecha").hide(); 
-                    $("#contHora").hide();
-                }
-            }
-
+            
 //Consulta en la bd del servidor si el usuario Existe... Sino Existe Lo agrega como nuevo usuario de la App
             function confirmarRegistro(persona) {
                 //var url = "http://192.168.1.33/domicilios/restaurante/confirmarRegistroFace";
@@ -288,9 +279,9 @@ and open the template in the editor.
     <body>
         <div data-role="page" id="pagina">
 
-            <div data-role="header" data-position="fixed" data-fullscreen="false">
-                <h3><img  src="image/logo.png" style="width: 50px;margin-top: 4px" /></h3>
-                <a href="#menu" id="btnMenu" style="border: none; background-color: #f7931e; box-shadow: none; margin-top: 11px" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext ui-btn-a ui-btn-inline">Menù</a>
+            <div data-role="header" data-position="fixed" data-fullscreen="false" style="padding: 0">
+                <h3><img  src="image/logo.png" style="width: 80px;margin-top: 4px" /></h3>
+                <!--<a href="#menu" id="btnMenu" style="border: none; background-color: #f7931e; box-shadow: none; margin-top: 11px" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext ui-btn-a ui-btn-inline">Menù</a>-->
             </div>
             
            
@@ -314,12 +305,6 @@ and open the template in the editor.
                 <div id="mapa" style="width: 100%"></div>
                 <hr>
                 <h3>Nuestros Servicios</h3>
-                <label for="tipo">*Tipo de Servicio:</label>
-                <select name="tipo" id="tipo" data-native-menu="false" onchange="mostrarFecha()">
-                    <option></option>
-                    <option value="e">Express</option>
-                    <option value="p">Programado</option>
-                </select>
                 <form>
                     <fieldset data-role="controlgroup">
                         <legend>*Escoge tu Servicio:</legend>
@@ -353,15 +338,7 @@ and open the template in the editor.
                 <div class="ui-field-contain">
                         <label for="telefono"><b>*Teléfono:</b></label>
                         <input type="number" max="12" min="8" name="telefono" id="telefono" placeholder="Teléfono" value="">
-                </div>
-                <div class="ui-field-contain" id="contFecha" hidden>
-                        <label for="fecha"><b>*Fecha:</b></label>
-                        <input type="date"  name="fecha" id="fecha" value="" />
-                </div>      
-                <div class="ui-field-contain" id="contHora" hidden>
-                        <label for="hora"><b>*Hora</b></label>
-                        <input type="time"  name="hora" id="hora" value="" />
-                </div>      
+                </div> 
                 <center><h4>Solicita tu mensajero, llegará al instante</h4></center>
                 <a id="btnEnvio" style="background-color: #84aa1f; color: white; text-decoration: none;text-shadow: none" href="#" onclick="comprobarServicio();" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-check ui-btn-icon-right">Solicitar Mensajero</a>
                 
