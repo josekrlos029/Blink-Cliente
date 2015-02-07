@@ -30,6 +30,9 @@ and open the template in the editor.
                 var cadena = $("#foot").html();
                 
                 $("#foot").html(cadena.replace(/&nbsp;/g,''));
+                
+                var cadena2 =$("#tabs").html();
+                $("#tabs").html(cadena2.replace(/&nbsp;/g,''));
             });
             var appLoader = false;
             document.addEventListener("deviceready", onDeviceReady, false);
