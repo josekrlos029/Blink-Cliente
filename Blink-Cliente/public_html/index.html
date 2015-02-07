@@ -61,7 +61,7 @@ and open the template in the editor.
 //                $("#contHora").hide();
 //                FB.init({appId: "1428385527442767", nativeInterface: CDV.FB, useCachedDialogs: false});
 
-                $("#mapa").height($(document).height() - $("#head").height() - $("#foot").height() - ($("#btnPopupDiligencia").height()*2));
+                $("#mapa").height($(document).height() - $("#head").height() - $("#foot").height() - ($("#btnPopupDiligencia").height()*3));
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var lat = position.coords.latitude;
                     var lng = position.coords.longitude;
@@ -373,11 +373,11 @@ and open the template in the editor.
             
             <div data-role="footer" data-position="fixed" data-fullscreen="false"  id="foot" style="overflow:hidden;">
                 <div data-role="navbar" >
-                   <ul  >
+                   <ul>
                         <li><a href="#" data-icon="clock" class="ui-btn-active"><p class="smallLetter">Diligencias</p></a></li>
-                        <li><a href="#" data-icon="shop" ><p class="smallLetter">Restaurantes</p></a></li>
+                        <li><a href="#" data-icon="location" ><p class="smallLetter">Restaurantes</p></a></li>
                         <li><a href="#" data-icon="info"><p class="smallLetter">Otros</p></a></li>
-        <li><a href="#" data-icon="location"><p class="smallLetter">Mapa</p></a></li>
+                        <li><a href="#" data-icon="shop"><p class="smallLetter">Carrito</p></a></li>
                     </ul>
                 </div><!-- /navbar -->
              </div>
