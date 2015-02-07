@@ -61,7 +61,7 @@ and open the template in the editor.
 //                $("#contHora").hide();
 //                FB.init({appId: "1428385527442767", nativeInterface: CDV.FB, useCachedDialogs: false});
 
-                $("#mapa").height($(document).height() - $("#head").height() - $("#foot").height());
+                $("#mapa").height($(document).height() - $("#head").height() - $("#foot").height() - ($("#btnPopupDiligencia").height()*2));
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var lat = position.coords.latitude;
                     var lng = position.coords.longitude;
@@ -310,9 +310,7 @@ and open the template in the editor.
                 
                 <a href="#popupLogin" id="btnPopup" hidden data-rel="popup"  style="background-color: #84aa1f; color: white; text-decoration: none;text-shadow: none" class="ui-btn ui-shadow ui-corner-all ui-icon-check ui-btn-icon-right boton">Aceptar</a>
                  
-                <div data-role="popup" id="popupDiligencia" data-overlay-theme="b" data-theme="b" class="ui-corner-all" data-dismissible="false">
-                    
-                    <h3>Nuestros Servicios</h3>
+                <div style="padding: 10px" data-role="popup" id="popupDiligencia" data-overlay-theme="b" data-theme="b" class="ui-corner-all" data-dismissible="true">                    <h3>Nuestros Servicios</h3>
                 <form>
                     <fieldset data-role="controlgroup">
                         <legend>*Escoge tu Servicio:</legend>
