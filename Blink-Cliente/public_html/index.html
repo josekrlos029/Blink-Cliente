@@ -61,7 +61,7 @@ and open the template in the editor.
 //                $("#contHora").hide();
 //                FB.init({appId: "1428385527442767", nativeInterface: CDV.FB, useCachedDialogs: false});
 
-                $("#mapa").height($(document).height() - $("#btnPopupDiligencia").height()- $("#head").height() - $("#foot").height());
+                $("#mapa").height($(document).height() - $("#head").height() - $("#foot").height());
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var lat = position.coords.latitude;
                     var lng = position.coords.longitude;
