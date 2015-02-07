@@ -61,7 +61,7 @@ and open the template in the editor.
 //                $("#contHora").hide();
 //                FB.init({appId: "1428385527442767", nativeInterface: CDV.FB, useCachedDialogs: false});
 
-                $("#mapa").height($("#mainPage").height() - $("#btnPopupDiligencia").height());
+                $("#mapa").height($(document).height() - $("#btnPopupDiligencia").height()- $("#head").height() - $("#foot").height());
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var lat = position.coords.latitude;
                     var lng = position.coords.longitude;
@@ -281,7 +281,7 @@ and open the template in the editor.
     <body>
         <div data-role="page" id="pagina">
 
-            <div data-role="header" data-position="fixed" data-fullscreen="false" style="padding: 0">
+            <div data-role="header" id="head" data-position="fixed" data-fullscreen="false" style="padding: 0">
                 <h3><img  src="image/logo.png" style="width: 80px;margin-top: 4px" /></h3>
                 <!--<a href="#menu" id="btnMenu" style="border: none; background-color: #f7931e; box-shadow: none; margin-top: 11px" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext ui-btn-a ui-btn-inline">Menù</a>-->
             </div>
