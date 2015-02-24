@@ -28,7 +28,7 @@ and open the template in the editor.
                 </ul>
             </div>
             
-            <div data-role="footer" data-position="fixed" data-fullscreen="false"  id="foot" style="overflow:hidden;">
+            <div data-role="footer" data-position="fixed" data-fullscreen="false" id="foot" style="overflow:hidden;">
                 <div data-role="navbar" >
                    <ul>
                         <li><a data-ajax="false" href="index.html" data-icon="clock"><p class="smallLetter">Diligencias</p></a></li>
@@ -49,9 +49,7 @@ and open the template in the editor.
         <script>
             
              $(document).ready(function(){
-                var cadena = $("#foot").html();
                 
-                $("#foot").html(cadena.replace(/&nbsp;/g,''));
                 
                 //var cadena2 =$("#tabs").html();
                 //$("#tabs").html(cadena2.replace(/&nbsp;/g,''));
@@ -65,7 +63,9 @@ and open the template in the editor.
             }
 
             function onDeviceReady() {
-
+                var cadena = $("#foot").html();
+                
+                $("#foot").html(cadena.replace(/&nbsp;/g,''));
                 mostrarRestaurantes();
             }
 
@@ -84,7 +84,7 @@ and open the template in the editor.
                     html: html
                 });
                 var idTipo = localStorage.getItem("idTipo");
-                var ciudad = localStorage.getItem("ubicacion");
+                var ciudad = "Valledupar";
                 
                 //var url = "http://192.168.1.33/domicilios/restaurante/consultarRestaurantesPorTipo";
                 var url = "http://admin.tudomicilio.net/restaurante/consultarRestaurantesPorTipo";
