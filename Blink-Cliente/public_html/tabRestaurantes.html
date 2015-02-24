@@ -25,7 +25,7 @@ and open the template in the editor.
         <script src="cdv-plugin-fb-connect.js"></script>
         <script src="facebook-js-sdk.js"></script>
         <script>
-
+            
             $(document).ready(function(){
                 var cadena = $("#foot").html();
                 
@@ -43,7 +43,7 @@ and open the template in the editor.
             }
 
             function onDeviceReady() {
-               // cargarMapa();
+                cargarMapa();
             }
 
             var mapa;
@@ -190,7 +190,7 @@ and open the template in the editor.
                                 alert("3");
                                 $('#lista').show();
                                 alert("4");
-                                //$('#lista').listview('refresh');
+                                $('#lista').listview('refresh');
                                 alert("5");
                                 $.mobile.loading("hide");
                                 alert("6");
@@ -219,24 +219,23 @@ and open the template in the editor.
                   <div data-role="navbar">
                     <ul>
                       <li><a href="#one" data-ajax="false">Mapa</a></li>
-                      <li><a href="#two" data-ajax="false" onclick="//mostrarLista();">Lista</a></li>
+                      <li><a href="#two" data-ajax="false" onclick="mostrarLista()">Lista</a></li>
                     </ul>
                   </div>
-                  <div  data-inset="false" id="one">
+                  <div data-inset="false" id="one">
                     <p>hola</p>
                     <!--<div id="mapa" style="width: 100%"></div>-->
                   </div>
                   <div id="two">
-                    <p>hola2</p>
-                    <!--<ul data-role="listview" data-filter="true" data-filter-placeholder="Busqueda Rápida..." data-inset="false" id="lista">
+                    <ul data-role="listview" data-filter="true" data-filter-placeholder="Busqueda Rápida..." data-inset="false" id="lista">
 
-                    </ul>-->
+                    </ul>
                   </div>
                 </div>
                 
             </div>
             
-            <div data-role="footer" data-position="fixed" data-fullscreen="false"  id="foot" style="overflow:hidden;">
+           <div data-role="footer" data-position="fixed" data-fullscreen="false"  id="foot" style="overflow:hidden;">
                 <div data-role="navbar" >
                    <ul>
                         <li><a data-ajax="false" href="index.html" data-icon="clock"><p class="smallLetter">Diligencias</p></a></li>
@@ -244,7 +243,7 @@ and open the template in the editor.
                         <li><a href="mostrarSitioServicio.html" data-icon="info"><p class="smallLetter">Otros</p></a></li>
                         <li><a href="carrito.html" data-icon="shop"><p class="smallLetter">Carrito</p></a></li>
                     </ul>
-                </div><!-- /navbar -->
+                </div><!-- /navbar--> 
              </div>
             
         </div>
