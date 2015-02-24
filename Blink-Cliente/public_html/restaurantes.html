@@ -9,7 +9,7 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/restaurantes.min.css" />
+        <link rel="stylesheet" href="css/blink-theme-jqm.min.css" />
         <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
         <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
         <link rel="stylesheet" href="css/style.css" />
@@ -47,7 +47,16 @@ and open the template in the editor.
         <script src="js/app.js"></script>
         <script src="phonegap.js" type="text/javascript"></script>
         <script>
-
+            
+             $(document).ready(function(){
+                var cadena = $("#foot").html();
+                
+                $("#foot").html(cadena.replace(/&nbsp;/g,''));
+                
+                //var cadena2 =$("#tabs").html();
+                //$("#tabs").html(cadena2.replace(/&nbsp;/g,''));
+            });
+            
             document.addEventListener("deviceready", onDeviceReady, false);
             document.addEventListener("menubutton", onMenuKeyDown, false);
 
