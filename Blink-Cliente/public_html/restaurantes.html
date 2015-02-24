@@ -122,7 +122,8 @@ and open the template in the editor.
 
             function mostrarRestaurante(idRestaurante) {
                 localStorage.setItem("idRestaurante", idRestaurante);
-                var seccion = localStorage.getItem("seccion");
+                //var seccion = localStorage.getItem("seccion");
+                var seccion = "PEDIDOS";
                 if(seccion == "PEDIDOS"){
                    location.href = "mostrarRestaurante.html"; 
                 }else if(seccion == "RESERVAS"){
