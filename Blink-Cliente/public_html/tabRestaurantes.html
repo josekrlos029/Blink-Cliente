@@ -181,13 +181,19 @@ and open the template in the editor.
                     }
                 })
                         .done(function(msg) {
-                            alert(msg);
+                            
                             $("#lista").hide();
+                    alert("1");
                             $("#lista").html(msg);
+                            alert("2");
                             setTimeout(function() {
+                                alert("3");
                                 $('#lista').show();
+                                alert("4");
                                 $('#lista').listview('refresh');
+                                alert("5");
                                 $.mobile.loading("hide");
+                                alert("6");
                                 appLoader=true;
                             }, 1000);
 
