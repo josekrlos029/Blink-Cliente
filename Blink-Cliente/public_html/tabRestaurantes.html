@@ -31,8 +31,8 @@ and open the template in the editor.
                 
                 $("#foot").html(cadena.replace(/&nbsp;/g,''));
                 
-                var cadena2 =$("#tabs").html();
-                $("#tabs").html(cadena2.replace(/&nbsp;/g,''));
+                //var cadena2 =$("#tabs").html();
+                //$("#tabs").html(cadena2.replace(/&nbsp;/g,''));
             });
             var appLoader = false;
             document.addEventListener("deviceready", onDeviceReady, false);
@@ -43,7 +43,7 @@ and open the template in the editor.
             }
 
             function onDeviceReady() {
-                cargarMapa();
+                mostrarTipos();
             }
 
             var mapa;
@@ -198,10 +198,6 @@ and open the template in the editor.
                             }, 1000);
 
                         });
-
-
-
-
             }
         </script>
     </head>
@@ -215,22 +211,9 @@ and open the template in the editor.
             
             <div role="main" id="mainPage" class="ui-content" style="padding: 0; margin: 0;">
                
-                <div data-role="tabs" id="tabs">
-                  <div data-role="navbar">
-                    <ul>
-                      <li><a href="#one" data-ajax="false">Mapa</a></li>
-                      <li><a href="hacerPedido.html" data-ajax="false" onclick="mostrarLista()">Lista</a></li>
-                    </ul>
-                  </div>
-                  <div data-inset="false" id="one">
-                    <div id="mapa" style="width: 100%"></div>
-                  </div>
-                  <div id="two">
-                    <ul data-role="listview" data-filter="true" data-filter-placeholder="Busqueda Rápida..." data-inset="false" id="lista">
+                <ul data-role="listview" data-filter="true" data-filter-placeholder="Busqueda Rápida..." data-inset="false" id="lista">
 
-                    </ul>
-                  </div>
-                </div>
+                </ul>
                 
             </div>
             
