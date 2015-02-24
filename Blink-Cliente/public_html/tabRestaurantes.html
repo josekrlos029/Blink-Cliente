@@ -177,13 +177,12 @@ and open the template in the editor.
                     type: "POST",
                     url: url,
                     data: {
-                        modulo: localStorage.getItem("seccion")
+                        modulo: "PEDIDOS"
                     }
                 })
                         .done(function(msg) {
-               
+                            alert(msg);
                             $("#lista").hide();
-                            
                             $("#lista").html(msg);
                             setTimeout(function() {
                                 $('#lista').show();
@@ -217,7 +216,7 @@ and open the template in the editor.
                       <li><a href="#two" onclick="mostrarLista();" data-ajax="false">Lista</a></li>
                     </ul>
                   </div>
-                  <div id="one" class="ui-body-d ui-content">
+                  <div  data-inset="false" id="one" class="ui-body-d ui-content">
                     <div id="mapa" style="width: 100%"></div>
                   </div>
                   <div id="two">
@@ -229,13 +228,11 @@ and open the template in the editor.
                 
             </div>
             
-            
-            
             <div data-role="footer" data-position="fixed" data-fullscreen="false"  id="foot" style="overflow:hidden;">
                 <div data-role="navbar" >
                    <ul>
-                        <li><a data-ajax="false" href="index.html" data-icon="clock" class="ui-btn-active"><p class="smallLetter">Diligencias</p></a></li>
-                        <li><a href="#" data-icon="location" ><p class="smallLetter">Restaurantes</p></a></li>
+                        <li><a data-ajax="false" href="index.html" data-icon="clock"><p class="smallLetter">Diligencias</p></a></li>
+                        <li><a href="#" data-icon="location" class="ui-btn-active" ><p class="smallLetter">Restaurantes</p></a></li>
                         <li><a href="mostrarSitioServicio.html" data-icon="info"><p class="smallLetter">Otros</p></a></li>
                         <li><a href="carrito.html" data-icon="shop"><p class="smallLetter">Carrito</p></a></li>
                     </ul>
