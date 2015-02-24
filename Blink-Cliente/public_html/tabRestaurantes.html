@@ -14,6 +14,37 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
         <link rel="stylesheet" href="css/style.css" />
         <link href="css/chardinjs.css" rel="stylesheet">
+    </head>
+    <body>
+        <div data-role="page" id="pagina">
+
+            <div data-role="header" id="head" data-position="fixed" data-fullscreen="false" style="padding: 0">
+                <h3><img  src="image/logo.png" style="width: 80px;margin-top: 4px" /></h3>
+                <!--<a href="#menu" id="btnMenu" style="border: none; background-color: #f7931e; box-shadow: none; margin-top: 11px" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext ui-btn-a ui-btn-inline">Menù</a>-->
+            </div>
+            
+            <div role="main" id="mainPage" class="ui-content" style="padding: 0; margin: 0;">
+               
+                <ul data-role="listview" data-filter="true" data-filter-placeholder="Busqueda Rápida..." data-inset="false" id="lista">
+
+                </ul>
+                
+            </div>
+            
+           <div data-role="footer" data-position="fixed" data-fullscreen="false"  id="foot" style="overflow:hidden;">
+                <div data-role="navbar" >
+                   <ul>
+                        <li><a data-ajax="false" href="index.html" data-icon="clock"><p class="smallLetter">Diligencias</p></a></li>
+                        <li><a href="#" data-icon="location" class="ui-btn-active" ><p class="smallLetter">Restaurantes</p></a></li>
+                        <li><a href="mostrarSitioServicio.html" data-icon="info"><p class="smallLetter">Otros</p></a></li>
+                        <li><a href="carrito.html" data-icon="shop"><p class="smallLetter">Carrito</p></a></li>
+                    </ul>
+                </div><!-- /navbar--> 
+             </div>
+            
+        </div>
+         
+
         <script src="js/jquery-1.11.1.min.js"></script>
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
         <script src="js/jquery.liveSearch.js"></script>
@@ -183,53 +214,29 @@ and open the template in the editor.
                         .done(function(msg) {
                             
                             $("#lista").hide();
-                            alert("1");
+                            
                             $("#lista").html(msg);
-                            alert("2");
+                            
                             setTimeout(function() {
-                                alert("3");
+                                
                                 $('#lista').show();
-                                alert("4");
+                                
                                 $('#lista').listview('refresh');
-                                alert("5");
+                                
                                 $.mobile.loading("hide");
-                                alert("6");
+                                
                                 appLoader=true;
                             }, 1000);
 
                         });
             }
+            
+             
+            function mostrarRestaurantes(idTipo) {
+
+                localStorage.setItem("idTipo", idTipo);
+                location.href = "restaurantes.html";
+            }
         </script>
-    </head>
-    <body>
-        <div data-role="page" id="pagina">
-
-            <div data-role="header" id="head" data-position="fixed" data-fullscreen="false" style="padding: 0">
-                <h3><img  src="image/logo.png" style="width: 80px;margin-top: 4px" /></h3>
-                <!--<a href="#menu" id="btnMenu" style="border: none; background-color: #f7931e; box-shadow: none; margin-top: 11px" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext ui-btn-a ui-btn-inline">Menù</a>-->
-            </div>
-            
-            <div role="main" id="mainPage" class="ui-content" style="padding: 0; margin: 0;">
-               
-                <ul data-role="listview" data-filter="true" data-filter-placeholder="Busqueda Rápida..." data-inset="false" id="lista">
-
-                </ul>
-                
-            </div>
-            
-           <div data-role="footer" data-position="fixed" data-fullscreen="false"  id="foot" style="overflow:hidden;">
-                <div data-role="navbar" >
-                   <ul>
-                        <li><a data-ajax="false" href="index.html" data-icon="clock"><p class="smallLetter">Diligencias</p></a></li>
-                        <li><a href="#" data-icon="location" class="ui-btn-active" ><p class="smallLetter">Restaurantes</p></a></li>
-                        <li><a href="mostrarSitioServicio.html" data-icon="info"><p class="smallLetter">Otros</p></a></li>
-                        <li><a href="carrito.html" data-icon="shop"><p class="smallLetter">Carrito</p></a></li>
-                    </ul>
-                </div><!-- /navbar--> 
-             </div>
-            
-        </div>
-         
-
     </body>
 </html>
