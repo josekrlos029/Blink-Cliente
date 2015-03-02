@@ -67,9 +67,7 @@ and open the template in the editor.
             
             $(document).ready(function(){
                 
-                var cadena = $("#foot").html();
-                
-                $("#foot").html(cadena.replace(/&nbsp;/g,''));
+               
                 
                 //var cadena2 =$("#tabs").html();
                 //$("#tabs").html(cadena2.replace(/&nbsp;/g,''));
@@ -78,6 +76,9 @@ and open the template in the editor.
             //document.addEventListener("menubutton", onMenuKeyDown, false);
             document.addEventListener("deviceready", onDeviceReady, false);
             function onDeviceReady() {
+                 var cadena = $("#foot").html();
+                
+                $("#foot").html(cadena.replace(/&nbsp;/g,''));
                 mostrarTipos();
             }
             

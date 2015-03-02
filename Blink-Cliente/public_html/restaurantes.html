@@ -32,8 +32,8 @@ and open the template in the editor.
                 <div data-role="navbar" >
                    <ul>
                         <li><a data-ajax="false" href="index.html" data-icon="clock"><p class="smallLetter">Diligencias</p></a></li>
-                        <li><a href="#" data-icon="location" class="ui-btn-active" ><p class="smallLetter">Restaurantes</p></a></li>
-                        <li><a href="mostrarSitioServicio.html" data-icon="info"><p class="smallLetter">Otros</p></a></li>
+                    <li><a data-ajax="false" href="tabRestaurantes.html" data-icon="location" id="tabRest" ><p class="smallLetter">Restaurantes</p></a></li>
+                    <li><a href="mostrarSitioServicio.html" data-icon="info" id="tabServicio" onclick="servicios()"><p class="smallLetter">Otros</p></a></li>
                         <li><a href="carrito.html" data-icon="shop"><p class="smallLetter">Carrito</p></a></li>
                     </ul>
                 </div><!-- /navbar--> 
@@ -63,6 +63,13 @@ and open the template in the editor.
             }
 
             function onDeviceReady() {
+                
+                if(localStorage.getItem("seccion") == "SERVICIOS"){
+                    $("#tabServicio").addClass("ui-btn-active");
+                }else{
+                    $("#tabRest").addClass("ui-btn-active");
+                }
+                
                 var cadena = $("#foot").html();
                 
                 $("#foot").html(cadena.replace(/&nbsp;/g,''));
