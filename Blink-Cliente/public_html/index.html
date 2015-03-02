@@ -65,7 +65,7 @@ and open the template in the editor.
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var lat = position.coords.latitude;
                     var lng = position.coords.longitude;
-
+                     
                     var geocoder = new google.maps.Geocoder();
                     var yourLocation = new google.maps.LatLng(lat, lng);
                     
@@ -82,7 +82,10 @@ and open the template in the editor.
             function processGeocoder(results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     if (results[0]) {
-                        $("#direccion").val(results[0].formatted_address);
+                        var dir = results[0].formatted_address;
+                        var array = dir.split(',');
+                        localStorage.setItem("ubicacion",array[1]);
+                        //$("#direccion").val(results[0].formatted_address);
                     } else {
                         alert("Error al Obtener Dirección");
                     }
