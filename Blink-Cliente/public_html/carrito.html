@@ -17,9 +17,10 @@ and open the template in the editor.
     <body>
         <div data-role="page">
 
-            <div data-role="header" id="head" data-position="fixed" data-fullscreen="false" style="padding: 0">
+            <div data-role="header" data-position="fixed" data-fullscreen="false">
+                <a href="#" style="border: none; background-color: #f7931e;  box-shadow: none; margin-top: 11px" onclick="atras()" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-btn-a ui-btn-inline">Atras</a>
                 <h3><img  src="image/logo.png" style="width: 80px;margin-top: 4px" /></h3>
-                <!--<a href="#menu" id="btnMenu" style="border: none; background-color: #f7931e; box-shadow: none; margin-top: 11px" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext ui-btn-a ui-btn-inline">Menù</a>-->
+                
             </div>
             <!--<div data-role="panel" data-display="overlay" data-position="right" id="menu">
                 <input type="search" name="buscaRestaurante" id="buscaRestaurante" placeholder="Buscar Lugar">
@@ -72,6 +73,16 @@ and open the template in the editor.
                 </div>
 
             </div>
+            <div data-role="footer" data-position="fixed" data-fullscreen="false"  id="foot" style="overflow:hidden;">
+                <div data-role="navbar" >
+                   <ul>
+                        <li><a data-ajax="false" href="index.html" data-icon="clock" ><p class="smallLetter">Diligencias</p></a></li>
+                        <li><a data-ajax="false" href="tabRestaurantes.html" data-icon="location" ><p class="smallLetter">Restaurantes</p></a></li>
+                        <li><a href=#" data-icon="info" data-ajax="false"><p class="smallLetter" onclick="servicios()">Otros</p></a></li>
+                        <li><a href="#" data-icon="shop" class="ui-btn-active"><p class="smallLetter">Carrito</p></a></li>
+                    </ul>
+                </div><!-- /navbar -->
+             </div>
         </div>
         <script src="js/jquery-1.11.1.min.js"></script>
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
