@@ -97,6 +97,10 @@ and open the template in the editor.
             }
             
             function onDeviceReady() {
+                var cadena = $("#foot").html();
+                
+                $("#foot").html(cadena.replace(/&nbsp;/g,''));
+                
                 var $this = $(this),
                         theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
                         msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
@@ -111,7 +115,7 @@ and open the template in the editor.
                     html: html
                 });
                 var cant = 0;
-                var db = window.openDatabase("carrito", "1.0", "listacompraDB", 1000000);
+                var db = window.openDatabase("carritoBlink", "1.0", "listacompraDBBlink", 1000000);
                 db.transaction(function(tx) {
                     tx.executeSql('SELECT * FROM lista', [], function(tx, results) {
                         var len = results.rows.length;
@@ -162,7 +166,7 @@ and open the template in the editor.
             
             function recargarLista(){
                 var cant = 0;
-                var db = window.openDatabase("carrito", "1.0", "listacompraDB", 1000000);
+                var db = window.openDatabase("carritoBlink", "1.0", "listacompraDBBlink", 1000000);
                 db.transaction(function(tx) {
                     tx.executeSql('SELECT * FROM lista', [], function(tx, results) {
                         var len = results.rows.length;
@@ -189,7 +193,7 @@ and open the template in the editor.
                 });
             }
             function consultarCosto() {
-                var db = window.openDatabase("carrito", "1.0", "listacompraDB", 1000000);
+                var db = window.openDatabase("carritoBlink", "1.0", "listacompraDBBlink", 1000000);
                 db.transaction(function(tx) {
                     tx.executeSql('SELECT SUM(precio*cantidad) as total FROM lista', [], function(tx, results) {
                         var len = results.rows.length;
@@ -205,7 +209,7 @@ and open the template in the editor.
                 $.mobile.loading( "hide" );
             }
             function consultarCosto2() {
-                var db = window.openDatabase("carrito", "1.0", "listacompraDB", 1000000);
+                var db = window.openDatabase("carritoBlink", "1.0", "listacompraDBBlink", 1000000);
                 db.transaction(function(tx) {
                     tx.executeSql('SELECT SUM(precio*cantidad) as total FROM lista', [], function(tx, results) {
                         var len = results.rows.length;

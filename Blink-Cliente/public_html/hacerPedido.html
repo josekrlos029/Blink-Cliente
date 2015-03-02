@@ -162,7 +162,7 @@ and open the template in the editor.
                     streetViewControl: false,
                     mapTypeControl: false
                 });
-                var db = window.openDatabase("carrito", "1.0", "listacompraDB", 1000000);
+                var db = window.openDatabase("carritoBlink", "1.0", "listacompraDBBlink", 1000000);
                 db.transaction(function(tx) {
                     tx.executeSql('SELECT * FROM lista', [], function(tx, results) {
                         var len = results.rows.length;
@@ -260,7 +260,7 @@ and open the template in the editor.
                    $("#btnEnvio").attr("disabled","disabled");
                    var arreglo = new Array();
                    var idRestaurante;
-                   var db = window.openDatabase("carrito", "1.0", "listacompraDB", 1000000);
+                   var db = window.openDatabase("carritoBlink", "1.0", "listacompraDBBlink", 1000000);
                    db.transaction(function(tx) {
                        tx.executeSql('SELECT * FROM lista', [], function(tx, results) {
                            var len = results.rows.length;
