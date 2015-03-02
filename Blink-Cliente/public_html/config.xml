@@ -18,50 +18,50 @@
     <preference name="phonegap-version" value="3.6.3" />
     <preference name="orientation" value="portrait" />
     
-    <icon src="image/IconoAndroid.png" gap:role="default" />
-	<icon src="image/IconoAndroid.png" width="96" height="96" />
-	<icon src="image/IconoAndroid.png" width="72" height="72" />
-	<icon src="image/IconoAndroid.png" width="48" height="48" />
-	<icon src="image/IconoAndroid.png" width="36" height="36" />
+    <icon src="image/IconoiOS.jpg" gap:role="default" />
+	<icon src="image/IconoiOS.jpg" width="96" height="96" />
+	<icon src="image/IconoiOS.jpg" width="72" height="72" />
+	<icon src="image/IconoiOS.jpg" width="48" height="48" />
+	<icon src="image/IconoiOS.jpg" width="36" height="36" />
               <!-- iOS 7.0+ -->
               <!-- iPhone / iPod Touch  -->
-              <icon src="image/IconoiOS-60.png" gap:platform="ios" width="60" height="60" />
-              <icon src="image/IconoiOS-120.png" gap:platform="ios" width="120" height="120" />
+              <icon src="image/IconoiOS-60.jpg" gap:platform="ios" width="60" height="60" />
+              <icon src="image/IconoiOS-120.jpg" gap:platform="ios" width="120" height="120" />
               <!-- iPad -->
-              <icon src="image/IconoiOS-76.png" gap:platform="ios" width="76" height="76" />
-              <icon src="image/IconoiOS-152.png" gap:platform="ios" width="152" height="152" />
+              <icon src="image/IconoiOS-76.jpg" gap:platform="ios" width="76" height="76" />
+              <icon src="image/IconoiOS-152.jpg" gap:platform="ios" width="152" height="152" />
               <!-- iOS 6.1 -->
               <!-- Spotlight Icon -->
-              <icon src="image/IconoiOS-40.png" gap:platform="ios" width="40" height="40" />
-              <icon src="image/IconoiOS-80.png" gap:platform="ios" width="80" height="80" />
+              <icon src="image/IconoiOS-40.jpg" gap:platform="ios" width="40" height="40" />
+              <icon src="image/IconoiOS-80.jpg" gap:platform="ios" width="80" height="80" />
               <!-- iPhone / iPod Touch -->
-              <icon src="image/IconoiOS-57.png" gap:platform="ios" width="57" height="57" />
-              <icon src="image/IconoiOS-114.png" gap:platform="ios" width="114" height="114" />
+              <icon src="image/IconoiOS-57.jpg" gap:platform="ios" width="57" height="57" />
+              <icon src="image/IconoiOS-114.jpg" gap:platform="ios" width="114" height="114" />
               <!-- iPad -->
-              <icon src="image/IconoiOS-72.png" gap:platform="ios" width="72" height="72" />
-              <icon src="image/IconoiOS-144.png" gap:platform="ios" width="144" height="144" />
+              <icon src="image/IconoiOS-72.jpg" gap:platform="ios" width="72" height="72" />
+              <icon src="image/IconoiOS-144.jpg" gap:platform="ios" width="144" height="144" />
               <!-- iPhone Spotlight and Settings Icon -->
-              <icon src="image/IconoiOS-29.png" gap:platform="ios" width="29" height="29" />
-              <icon src="image/IconoiOS-58.png" gap:platform="ios" width="58" height="58" />
+              <icon src="image/IconoiOS-29.jpg" gap:platform="ios" width="29" height="29" />
+              <icon src="image/IconoiOS-58.jpg" gap:platform="ios" width="58" height="58" />
               <!-- iPad Spotlight and Settings Icon -->
-              <icon src="image/IconoiOS-50.png" gap:platform="ios" width="50" height="50" />
-              <icon src="image/IconoiOS-100.png" gap:platform="ios" width="100" height="100" />
+              <icon src="image/IconoiOS-50.jpg" gap:platform="ios" width="50" height="50" />
+              <icon src="image/IconoiOS-100.jpg" gap:platform="ios" width="100" height="100" />
         
         <!-- SPLASH -->
-    <gap:splash src="image/SplashAndroid/ldpi.9.png" gap:platform="android" gap:density="ldpi" />
-    <gap:splash src="image/SplashAndroid/mdpi.9.png" gap:platform="android" gap:density="mdpi" />
-    <gap:splash src="image/SplashAndroid/hdpi.9.png" gap:platform="android" gap:density="hdpi" />
-    <gap:splash src="image/SplashAndroid/xhdpi.9.png" gap:platform="android" gap:density="xhdpi" />
+    <gap:splash src="image/SplashAndroid/320x426.jpg" gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="image/SplashAndroid/320x476.jpg" gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="image/SplashAndroid/480x640.jpg" gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="image/SplashAndroid/720x960.jpg" gap:platform="android" gap:density="xhdpi" />
 
-    <gap:splash src="image/SplashiOS/Default.png" gap:platform="ios" width="320" height="480" />
-    <gap:splash src="image/SplashiOS/Default_at_2x.png" gap:platform="ios" width="640" height="960" />
-    <gap:splash src="image/SplashiOS/Default_iphone5.png" gap:platform="ios" width="640" height="1136" />
-    <gap:splash src="image/SplashiOS/Default-Landscape.png" gap:platform="ios" width="1024" height="748" />
-    <gap:splash src="image/SplashiOS/Default-Portrait.png" gap:platform="ios" width="768" height="1004" />
+    <gap:splash src="image/SplashiOS/Default.jpg" gap:platform="ios" width="320" height="480" />
+    <gap:splash src="image/SplashiOS/Default_at_2x.jpg" gap:platform="ios" width="640" height="960" />
+    <gap:splash src="image/SplashiOS/Default_iphone5.jpg" gap:platform="ios" width="640" height="1136" />
+    <gap:splash src="image/SplashiOS/Default-Landscape.jpg" gap:platform="ios" width="1024" height="748" />
+    <gap:splash src="image/SplashiOS/Default-Portrait.jpg" gap:platform="ios" width="768" height="1004" />
 
     <!-- retina iPad support: PhoneGap 2.5.0+ only -->
-    <gap:splash src="image/SplashiOS/Default-Landscape_at_2x.png" gap:platform="ios" width="2048" height="1496" />
-    <gap:splash src="image/SplashiOS/Default-Portrait_at_2x.png" gap:platform="ios" width="1536" height="2008" />
+    <gap:splash src="image/SplashiOS/Default-Landscape_at_2x.jpg" gap:platform="ios" width="2048" height="1496" />
+    <gap:splash src="image/SplashiOS/Default-Portrait_at_2x.jpg" gap:platform="ios" width="1536" height="2008" />
     
     <gap:platforms>
         <gap:platform name="android" minVersion="2.1" />
