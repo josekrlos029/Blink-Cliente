@@ -28,7 +28,7 @@ and open the template in the editor.
 
             $(document).ready(function(){
                 var cadena = $("#foot").html();
-                
+                alert("..");
                 $("#foot").html(cadena.replace(/&nbsp;/g,''));
             });
             
@@ -43,7 +43,7 @@ and open the template in the editor.
 
             function onDeviceReady() {
                 $("#btnPopup").hide();
-
+                alert("..");
                 var $this = $(this),
                         theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
                         msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
@@ -71,7 +71,7 @@ and open the template in the editor.
                     
                     ubicarMapa(lat, lng);
                     geocoder.geocode({'latLng': yourLocation}, processGeocoder);
-
+                    alert("..");
                 }, function() {
                     alert("Error al Obtener la Posición de su dispositivo, intente activar el GPS !");
                     location.href = "index.html";
