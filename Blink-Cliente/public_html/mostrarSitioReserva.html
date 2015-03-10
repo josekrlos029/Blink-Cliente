@@ -46,7 +46,7 @@ and open the template in the editor.
                     textonly: textonly,
                     html: html
                 });
-                $("#img").attr("src", 'http://admin.tudomicilio.net/utiles/imagenes/fotos/'+localStorage.getItem("idRestaurante")+'.png');
+                $("#img").attr("src", 'http://admin.blinkmanager.com/utiles/imagenes/fotos/'+localStorage.getItem("idRestaurante")+'.png');
 
                 $("#btnEliminar").hide();
                 $("#popupLogin").hide();
@@ -80,7 +80,7 @@ and open the template in the editor.
 
                 var idRestaurante = localStorage.getItem("idRestaurante");
                 //var url = "http://192.168.1.33/domicilios/restaurante/consultarRestaurante";
-                var url = "http://admin.tudomicilio.net/restaurante/consultarRestaurante";
+                var url = "http://admin.blinkmanager.com/restaurante/consultarRestaurante";
                 //var url = "/domicilios/restaurante/consultarRestaurante";
                 $.ajax({
                     type: "POST",
@@ -137,7 +137,7 @@ and open the template in the editor.
                     lng: lngDestino,
                     title: 'Destino',
                     animation: google.maps.Animation.DROP,
-                    icon:  "http://admin.tudomicilio.net/utiles/imagenes/marcadores/"+localStorage.getItem("idRestaurante")+".png"
+                    icon:  "http://admin.blinkmanager.com/utiles/imagenes/marcadores/"+localStorage.getItem("idRestaurante")+".png"
                 });
                 mapa.drawRoute({
                     origin: [lat, lng],
@@ -154,7 +154,7 @@ and open the template in the editor.
             function menu() {
                 var idRestaurante = localStorage.getItem("idRestaurante");
                 
-                var url = "http://admin.tudomicilio.net/restaurante/reserva";
+                var url = "http://admin.blinkmanager.com/restaurante/reserva";
                 //var url = "http://192.168.1.33/domicilios/restaurante/menu";
                 //var url = "/domicilios/restaurante/menu";
                 $.ajax({
@@ -221,7 +221,7 @@ and open the template in the editor.
                         telefono: telefono
                     };
 
-                    var url = "http://admin.tudomicilio.net/restaurante/registrarReserva";
+                    var url = "http://admin.blinkmanager.com/restaurante/registrarReserva";
 
                     $.ajax({
                         type: "POST",
@@ -296,7 +296,7 @@ and open the template in the editor.
             
             function confirmarRegistro(persona) {
                 //var url = "http://192.168.1.33/domicilios/restaurante/confirmarRegistroFace";
-                var url = "http://admin.tudomicilio.net/restaurante/confirmarRegistroFace";
+                var url = "http://admin.blinkmanager.com/restaurante/confirmarRegistroFace";
 
                 $.ajax({
                     type: "POST",

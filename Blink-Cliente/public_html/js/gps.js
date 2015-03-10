@@ -46,7 +46,7 @@ function gps(){
         headers: {                                              // <-- Android ONLY:  Optional HTTP headers sent to your configured #url when persisting locations
             "X-Foo": "BAR"
         },
-        url: 'http://admin.tudomicilio.net/restaurante/envio/hola',
+        url: 'http://admin.blinkmanager.com/restaurante/envio/hola',
         desiredAccuracy: 10,
         stationaryRadius: 1,
         distanceFilter: 1,

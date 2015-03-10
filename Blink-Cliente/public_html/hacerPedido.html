@@ -172,7 +172,7 @@ and open the template in the editor.
 
                             //var url = "/domicilios/restaurante/consultarRestaurante";
                             //var url = "http://192.168.1.33/domicilios/restaurante/consultarRestaurante";
-                            var url = "http://admin.tudomicilio.net/restaurante/consultarRestaurante";
+                            var url = "http://admin.blinkmanager.com/restaurante/consultarRestaurante";
                             $.ajax({
                                 type: "POST",
                                 url: url,
@@ -211,7 +211,7 @@ and open the template in the editor.
                     lng: lngDestino,
                     title: 'Destino',
                     animation: google.maps.Animation.DROP,
-                    icon:  "http://admin.tudomicilio.net/utiles/imagenes/marcadores/"+localStorage.getItem("idRestaurante")+".png"
+                    icon:  "http://admin.blinkmanager.com/utiles/imagenes/marcadores/"+localStorage.getItem("idRestaurante")+".png"
 
                 });
                 mapa.drawRoute({
@@ -316,7 +316,7 @@ and open the template in the editor.
                 });
                 //var url = "/domicilios/restaurante/registrarDomicilio";
                 //var url = "http://192.168.1.33/domicilios/restaurante/registrarDomicilio";
-                var url = "http://admin.tudomicilio.net/restaurante/registrarDomicilio";
+                var url = "http://admin.blinkmanager.com/restaurante/registrarDomicilio";
 
                 $.ajax({
                     type: "POST",
@@ -392,7 +392,7 @@ and open the template in the editor.
 //Consulta en la bd del servidor si el usuario Existe... Sino Existe Lo agrega como nuevo usuario de la App
             function confirmarRegistro(persona) {
                 //var url = "http://192.168.1.33/domicilios/restaurante/confirmarRegistroFace";
-                var url = "http://admin.tudomicilio.net/restaurante/confirmarRegistroFace";
+                var url = "http://admin.blinkmanager.com/restaurante/confirmarRegistroFace";
 
                 $.ajax({
                     type: "POST",

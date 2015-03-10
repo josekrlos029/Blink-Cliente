@@ -139,7 +139,7 @@ and open the template in the editor.
                     textonly: textonly,
                     html: html
                 });
-                $("#img").attr("src", 'http://admin.tudomicilio.net/utiles/imagenes/fotos/'+localStorage.getItem("idRestaurante")+'.png');
+                $("#img").attr("src", 'http://admin.blinkmanager.com/utiles/imagenes/fotos/'+localStorage.getItem("idRestaurante")+'.png');
 
                 $("#btnEliminar").hide();
                 $("#slider").responsiveSlides({
@@ -172,7 +172,7 @@ and open the template in the editor.
 
                 var idRestaurante = localStorage.getItem("idRestaurante");
                 //var url = "http://192.168.1.33/domicilios/restaurante/consultarRestaurante";
-                var url = "http://admin.tudomicilio.net/restaurante/consultarRestaurante";
+                var url = "http://admin.blinkmanager.com/restaurante/consultarRestaurante";
                 //var url = "/domicilios/restaurante/consultarRestaurante";
                 $.ajax({
                     type: "POST",
@@ -229,7 +229,7 @@ and open the template in the editor.
                     lng: lngDestino,
                     title: 'Destino',
                     animation: google.maps.Animation.DROP,
-                    icon:  "http://admin.tudomicilio.net/utiles/imagenes/marcadores/"+localStorage.getItem("idRestaurante")+".png"
+                    icon:  "http://admin.blinkmanager.com/utiles/imagenes/marcadores/"+localStorage.getItem("idRestaurante")+".png"
                 });
                 mapa.drawRoute({
                     origin: [lat, lng],
@@ -245,7 +245,7 @@ and open the template in the editor.
 
             function menu() {
                 var idRestaurante = localStorage.getItem("idRestaurante");
-                var url = "http://admin.tudomicilio.net/restaurante/menu";
+                var url = "http://admin.blinkmanager.com/restaurante/menu";
                 //var url = "http://192.168.1.33/domicilios/restaurante/menu";
                 //var url = "/domicilios/restaurante/menu";
                 $.ajax({

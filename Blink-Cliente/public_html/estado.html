@@ -54,7 +54,7 @@ and open the template in the editor.
                 });
                 var idUsuario = localStorage.getItem("idUsuario");
                 //var url = "http://192.168.1.33/domicilios/restaurante/consultarPedidos";
-                var url = "http://admin.tudomicilio.net/restaurante/consultarPedidos";
+                var url = "http://admin.blinkmanager.com/restaurante/consultarPedidos";
                 //var url = "/domicilios/restaurante/consultarPedidos";
                 $.ajax({
                     type: "POST",
@@ -82,7 +82,7 @@ and open the template in the editor.
                 <h3><img  src="image/header.png" style="width: 130px;margin-top: 4px" /></h3>
                 <a href="#menu" id="btnMenu" style="border: none; background-color: #c5021a; box-shadow: none; margin-top: 11px" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext ui-btn-a ui-btn-inline">Menù</a>
             </div>
-            <div data-role="panel" data-display="overlay" id="menu" data-position="right">
+            <!--<div data-role="panel" data-display="overlay" id="menu" data-position="right">
                 <input type="search" name="buscaRestaurante" id="buscaRestaurante" placeholder="Buscar Lugar">
                 <div id="newSearch" style="width: 100%; z-index: 1000"></div> 
                 <br>

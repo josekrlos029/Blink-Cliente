@@ -95,7 +95,7 @@ and open the template in the editor.
 
 
                 //var url = "http://192.168.1.33/domicilios/restaurante/consultarRestaurantesCercanos";
-                var url = "http://admin.tudomicilio.net/restaurante/consultarRestaurantesCercanos";
+                var url = "http://admin.blinkmanager.com/restaurante/consultarRestaurantesCercanos";
                 //var url = "/domicilios/restaurante/consultarRestaurantesCercanos";
                 $.ajax({
                     type: "POST",
@@ -117,7 +117,7 @@ and open the template in the editor.
                                     lng: json[i].lng,
                                     title: json[i].nombre,
                                     animation: google.maps.Animation.DROP,
-                                    icon:  "http://admin.tudomicilio.net/utiles/imagenes/marcadores/"+json[i].id+".png",
+                                    icon:  "http://admin.blinkmanager.com/utiles/imagenes/marcadores/"+json[i].id+".png",
                                     click: function(e) {
                                         //alert(json[i].nombre);
                                     },

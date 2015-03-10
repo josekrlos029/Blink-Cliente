@@ -46,7 +46,7 @@
  ***/
 jQuery.fn.liveSearch = function(conf) {
     var config = jQuery.extend({
-        url: 'http://admin.tudomicilio.net/restaurante/buscar/',
+        url: 'http://admin.blinkmanager.com/restaurante/buscar/',
         id: 'jquery-live-search',
         duration: 400,
         typeDelay: 200,

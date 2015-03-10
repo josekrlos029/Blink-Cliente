@@ -36,8 +36,10 @@ and open the template in the editor.
                    <ul>
                         <li><a data-ajax="false" href="index.html" data-icon="clock"><p class="smallLetter">Diligencias</p></a></li>
                         <li><a href="#" data-icon="location" class="ui-btn-active" ><p class="smallLetter">Restaurantes</p></a></li>
+                        <li><a href="#" data-icon="star" onclick="licores()" class="ui-btn-active"><p class="smallLetter">Licores</p></a></li>
                         <li><a href="#" data-icon="info" onclick="servicios()"><p class="smallLetter">Otros</p></a></li>
-                        <li><a href="carrito.html" data-ajax="false" data-icon="shop"><p class="smallLetter">Carrito</p></a></li>
+        
+                        <!--<li><a href="carrito.html" data-ajax="false" data-icon="shop"><p class="smallLetter">Carrito</p></a></li>-->
                     </ul>
                 </div><!-- /navbar--> 
              </div>
@@ -136,7 +138,7 @@ and open the template in the editor.
 
 
                 //var url = "http://192.168.1.33/domicilios/restaurante/consultarRestaurantesCercanos";
-                var url = "http://admin.tudomicilio.net/restaurante/consultarRestaurantesCercanos";
+                var url = "http://admin.blinkmanager.com/restaurante/consultarRestaurantesCercanos";
                 //var url = "/domicilios/restaurante/consultarRestaurantesCercanos";
                 $.ajax({
                     type: "POST",
@@ -158,7 +160,7 @@ and open the template in the editor.
                                     lng: json[i].lng,
                                     title: json[i].nombre,
                                     animation: google.maps.Animation.DROP,
-                                    icon:  "http://admin.tudomicilio.net/utiles/imagenes/marcadores/"+json[i].id+".png",
+                                    icon:  "http://admin.blinkmanager.com/utiles/imagenes/marcadores/"+json[i].id+".png",
                                     click: function(e) {
                                         //alert(json[i].nombre);
                                     },
@@ -197,7 +199,7 @@ and open the template in the editor.
                 });
                 
                 
-                var url = "http://admin.tudomicilio.net/restaurante/consultarTipos";
+                var url = "http://admin.blinkmanager.com/restaurante/consultarTipos";
                 localStorage.setItem("seccion","PEDIDOS");
                
                 $.ajax({

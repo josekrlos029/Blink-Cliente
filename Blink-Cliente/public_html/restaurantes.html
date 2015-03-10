@@ -33,8 +33,9 @@ and open the template in the editor.
                    <ul>
                         <li><a data-ajax="false" href="index.html" data-icon="clock"><p class="smallLetter">Diligencias</p></a></li>
                         <li><a data-ajax="false" href="tabRestaurantes.html" data-icon="location" id="tabRest" ><p class="smallLetter">Restaurantes</p></a></li>
-                        <li><a href="mostrarSitioServicio.html" data-icon="info" id="tabServicio" onclick="servicios()"><p class="smallLetter">Otros</p></a></li>
-                        <li><a href="carrito.html" data-ajax="false" data-icon="shop"><p class="smallLetter">Carrito</p></a></li>
+                        <li><a href="#" data-icon="star" onclick="licores()"><p class="smallLetter">Licores</p></a></li> 
+                        <li><a onclick="servicios()" href=#" data-icon="info" data-ajax="false"><p class="smallLetter">Otros</p></a></li>                
+                         
                     </ul>
                 </div><!-- /navbar--> 
              </div>
@@ -94,7 +95,7 @@ and open the template in the editor.
                 var ciudad = "Valledupar";
                 
                 //var url = "http://192.168.1.33/domicilios/restaurante/consultarRestaurantesPorTipo";
-                var url = "http://admin.tudomicilio.net/restaurante/consultarRestaurantesPorTipo";
+                var url = "http://admin.blinkmanager.com/restaurante/consultarRestaurantesPorTipo";
                 //var url = "/domicilios/restaurante/consultarRestaurantesPorTipo";
                 $.ajax({
                     type: "POST",
@@ -113,9 +114,9 @@ and open the template in the editor.
                             
                             for (var i = 0; i < json.length; i++) {
                                 if (json[i].estado == "a"){
-                                    $("#lista").append('<li><a href="#" onclick="mostrarRestaurante(' + json[i].id + ')"><img src="http://admin.tudomicilio.net/utiles/imagenes/restaurantes/' + json[i].id + '.png"><h2>' + json[i].nombre + '</h2><p>' + json[i].descripcion + '</p></a></li>');
+                                    $("#lista").append('<li><a href="#" onclick="mostrarRestaurante(' + json[i].id + ')"><img src="http://admin.blinkmanager.com/utiles/imagenes/restaurantes/' + json[i].id + '.png"><h2>' + json[i].nombre + '</h2><p>' + json[i].descripcion + '</p></a></li>');
                                 }else if (json[i].estado == "c") {
-                                    $("#lista").append('<li><a href="#" onclick="mostrarRestaurante(' + json[i].id + ')"><img src="http://admin.tudomicilio.net/utiles/imagenes/restaurantes/' + json[i].id + '.png"><h2>' + json[i].nombre + ' <span style="font-size: 9px"> (cerrado) </span></h2><p>' + json[i].descripcion + '</p></a></li>');
+                                    $("#lista").append('<li><a href="#" onclick="mostrarRestaurante(' + json[i].id + ')"><img src="http://admin.blinkmanager.com/utiles/imagenes/restaurantes/' + json[i].id + '.png"><h2>' + json[i].nombre + ' <span style="font-size: 9px"> (cerrado) </span></h2><p>' + json[i].descripcion + '</p></a></li>');
                                 }
                             }
                             setTimeout(function() {

@@ -6,7 +6,7 @@
 $(document).ready(function() {
     consultarFooter();
     consultarMenu();
-    jQuery('#buscaRestaurante').liveSearch({url: 'http://admin.tudomicilio.net/restaurante/buscaRestaurante/', id: 'newSearch'});
+    jQuery('#buscaRestaurante').liveSearch({url: 'http://admin.blinkmanager.com/restaurante/buscaRestaurante/', id: 'newSearch'});
     
 });
 
@@ -250,7 +250,7 @@ function login() {
         };
     }
 
-    var url = "http://admin.tudomicilio.net/restaurante/login";
+    var url = "http://admin.blinkmanager.com/restaurante/login";
     //var url = "http://192.168.1.33/domicilios/restaurante/login";
     $.ajax({
         type: "POST",
@@ -319,7 +319,7 @@ function registrar() {
             };
         }
 
-        var url = "http://admin.tudomicilio.net/restaurante/registrarUsuario";
+        var url = "http://admin.blinkmanager.com/restaurante/registrarUsuario";
         //var url = "http://192.168.1.33/domicilios/restaurante/registrarUsuario";
         $.ajax({
             type: "POST",
@@ -409,7 +409,7 @@ function confirmarServicio(estado) {
     });
     //var url = "/domicilios/restaurante/registrarDomicilio";
     //var url = "http://192.168.1.33/domicilios/restaurante/confirmarDomicilio";
-    var url = "http://admin.tudomicilio.net/restaurante/confirmarServicio";
+    var url = "http://admin.blinkmanager.com/restaurante/confirmarServicio";
     var data = {idServicio: localStorage.getItem("idServicio"),
         estado: estado};
     $.ajax({
@@ -452,7 +452,7 @@ function confirmarDomicilio(estado) {
     });
     //var url = "/domicilios/restaurante/registrarDomicilio";
     //var url = "http://192.168.1.33/domicilios/restaurante/confirmarDomicilio";
-    var url = "http://admin.tudomicilio.net/restaurante/confirmarDomicilio";
+    var url = "http://admin.blinkmanager.com/restaurante/confirmarDomicilio";
     var data = {idDomicilio: localStorage.getItem("idDomicilio"),
         estado: estado};
     $.ajax({
@@ -731,4 +731,10 @@ function pedidos(){
     }else{
         alert("La app aún no ha obtenido tu Ubicación, activa el GPS y/o refresca la página");
     }
+}
+
+function licores(){
+    localStorage.setItem("seccion","PEDIDOS");
+    localStorage.setItem("idTipo",13);
+    location.href = "restaurantes.html";
 }
