@@ -81,7 +81,7 @@ var page = {
     configBody: function(){
         
         $("#mainPage").height($(window).height() - $("#head").height() - $("#foot").height() ).css({
-            "padding": "5px"
+            "padding": "0"
         });
         
         
