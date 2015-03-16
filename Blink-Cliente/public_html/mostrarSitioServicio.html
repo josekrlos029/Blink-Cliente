@@ -38,17 +38,10 @@
 <script>
     var mapa, lng, lat;
 
-    document.addEventListener("deviceready", onDeviceReady, false);
-            //document.addEventListener("menubutton", onMenuKeyDown, false);
-
-    function onDeviceReady(){
-        initialize();
-    }
-
     $(document).ready(function(){
         $("#pageServcios").trigger("create");
         $("#img").attr("src", 'http://admin.blinkmanager.com/utiles/imagenes/fotos/' + localStorage.getItem("idRestaurante") + '.png');
-        
+        initialize();
         mostrarDatos();
         
     });

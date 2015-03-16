@@ -70,19 +70,11 @@
 <script>
     
     var mapa, lng, lat;
-    document.addEventListener("deviceready", onDeviceReady, false);
-    
-    function onDeviceReady() {
-                
-        initialize(); 
-
-    }
-
     
     $(document).ready(function(){
         $("#pageRestaurante").trigger("create");
         $("#img").attr("src", 'http://admin.blinkmanager.com/utiles/imagenes/fotos/' + localStorage.getItem("idRestaurante") + '.png');
-        
+        initialize(); 
         mostrarDatos();
         
     });

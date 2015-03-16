@@ -77,11 +77,11 @@ and open the template in the editor.
 
             });
 
-                            //document.addEventListener("deviceready", onDeviceReady, false);
+            document.addEventListener("deviceready", onDeviceReady, false);
 
 
                             function onDeviceReady() {
-                                $("#btnPopup").hide();
+                                /*$("#btnPopup").hide();
 
                                 var $this = $(this),
                                         theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
@@ -122,7 +122,7 @@ and open the template in the editor.
                                     alert("Error al Obtener la Posición de su dispositivo, intente activar el GPS !");
                                     location.href = "index.html";
                                 }, {enableHighAccuracy: true});
-
+*/
                             }
 
                             function processGeocoder(results, status) {
