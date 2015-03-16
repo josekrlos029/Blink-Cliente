@@ -235,6 +235,13 @@ var page = {
         
     },
     
+    mostrarRestaurante: function(){
+        
+        //$( "#mainPage" ).pagecontainer( "load", "diligenciasForm.html", { showLoadMsg: false } );
+        app.insertPage("mostrarRestaurante.html", "#mainPage", 1,true);
+        
+    },
+    
     configBody: function(){
         
         $("#mainPage").height($(window).height() - $("#head").height() - $("#foot").height() ).css({

@@ -1,88 +1,150 @@
-<div role="main" class="ui-content">
-    <input id="estado" type="hidden" />
-    <div class="ui-body ui-body-a ui-corner-all">
+<div id="pageRestaurante" data-rol="page">
+    <div role="main" class="ui-content">
+        <input id="estado" type="hidden" />
+        <div class="ui-body ui-body-a ui-corner-all">
 
-        <ul class="rslides" id="slider">
-            <li><img alt="" id="img"></li>
-        </ul>
-
-    </div>
-    <div data-role="tabs" id="tabs">
-        <div data-role="navbar">
-            <ul>
-                <li><a style="font-size: 11px" href="#one" data-ajax="false">Información</a></li>
-                <li><a style="font-size: 11px" href="#two" data-ajax="false">Productos</a></li>
+            <ul class="rslides" id="slider">
+                <li><img alt="" id="img"></li>
             </ul>
-        </div>
-        <div id="one" class="ui-body-d ui-content" style="padding-left: 0; padding-right: 0;">
 
-            <div class="ui-body ui-body-a ui-corner-all">
-                <h4 class="centrado" id="rest" style="margin-top: 5px; margin-bottom: 5px;">Descripción</h4>
-                <p id="descripcion" class="centrado" style="margin-top: 5px; margin-bottom: 5px;font-size: 12px"></p>
+        </div>
+        <div data-role="tabs" id="tabs">
+            <div data-role="navbar">
+                <ul>
+                    <li><a style="font-size: 11px" href="#one" data-ajax="false">Información</a></li>
+                    <li><a style="font-size: 11px" href="#two" data-ajax="false">Productos</a></li>
+                </ul>
             </div>
-            <br>
-            <div class="ui-body ui-body-a ui-corner-all">
-                <div class="ui-grid-a">
-                    <div class="ui-block-a"><div id="telefono" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-phone ui-btn-icon-notext ui-btn-inline">Delete</a></div></div>
-                    <div class="ui-block-b" style="margin-left: -10%;width: 60%;"><div id="direccion" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-location ui-btn-icon-notext ui-btn-inline">Delete</a></div></div>
-                    <div class="ui-block-a"><div id="tiempo" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-clock ui-btn-icon-notext ui-btn-inline">Delete</a></div></div>
-                    <div class="ui-block-b" style="margin-left: -10%;width: 60%;"><div id="distancia" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-navigation ui-btn-icon-notext ui-btn-inline">Delete</a></div></div>
+            <div id="one" class="ui-body-d ui-content" style="padding-left: 0; padding-right: 0;">
+
+                <div class="ui-body ui-body-a ui-corner-all">
+                    <h4 class="centrado" id="rest" style="margin-top: 5px; margin-bottom: 5px;">Descripción</h4>
+                    <p id="descripcion" class="centrado" style="margin-top: 5px; margin-bottom: 5px;font-size: 12px"></p>
                 </div>
+                <br>
+                <div class="ui-body ui-body-a ui-corner-all">
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><div id="telefono" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-phone ui-btn-icon-notext ui-btn-inline">Delete</a></div></div>
+                        <div class="ui-block-b" style="margin-left: -10%;width: 60%;"><div id="direccion" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-location ui-btn-icon-notext ui-btn-inline">Delete</a></div></div>
+                        <div class="ui-block-a"><div id="tiempo" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-clock ui-btn-icon-notext ui-btn-inline">Delete</a></div></div>
+                        <div class="ui-block-b" style="margin-left: -10%;width: 60%;"><div id="distancia" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-navigation ui-btn-icon-notext ui-btn-inline">Delete</a></div></div>
+                    </div>
+                </div>
+                <br>
+                <div class="ui-body ui-body-a ui-corner-all">
+                    <div id="mapa" style="width: 100%; height: 300px;" ></div>
+                </div>
+
             </div>
-            <br>
-            <div class="ui-body ui-body-a ui-corner-all">
-                <div id="mapa" style="width: 100%; height: 300px;" ></div>
+            <div id="two">
+
+
+
             </div>
-
-        </div>
-        <div id="two">
-
-
-
         </div>
     </div>
-</div>
-<div data-role="popup" id="popup" data-dismissible="false" data-overlay-theme="b" data-theme="b" class="ui-corner-all">
-    
-    <div style="padding:10px 20px;">
-        <a href="#" data-rel="back" id="close" onclick="reset();" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-        <h3 id="titu" style="text-align: center"></h3>                        
-        <p style="text-align: center" id="desc"></p>
-        <p style="text-align: center; font-weight: bold" id="prec"></p>
-        <div class="ui-field-contain">
-            <label for="canti">Cantidad:</label>
-            <input type="number" data-clear-btn="true" id="canti" name="canti" data-theme="a" value="">
-        </div>
-        <div class="ui-field-contain">
-            <label for="indicaciones">Indicaciones:</label>
-            <input type="text" data-clear-btn="true" id="indicaciones" placeholder="Ej: Sin cebolla" name="canti" data-theme="a" value="">
+    <div data-role="popup" id="popup" data-dismissible="false" data-overlay-theme="b" data-theme="b" class="ui-corner-all">
+
+        <div style="padding:10px 20px;">
+            <a href="#" data-rel="back" id="close" onclick="reset();" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <h3 id="titu" style="text-align: center"></h3>                        
+            <p style="text-align: center" id="desc"></p>
+            <p style="text-align: center; font-weight: bold" id="prec"></p>
+            <div class="ui-field-contain">
+                <label for="canti">Cantidad:</label>
+                <input type="number" data-clear-btn="true" id="canti" name="canti" data-theme="a" value="">
+            </div>
+            <div class="ui-field-contain">
+                <label for="indicaciones">Indicaciones:</label>
+                <input type="text" data-clear-btn="true" id="indicaciones" placeholder="Ej: Sin cebolla" name="canti" data-theme="a" value="">
+            </div>
+
+            <input type="hidden" value="" id="idProducto">
+            <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" id="btnPop" onclick="añadir()">Añadir</button>
+            <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" id="btnEliminar" onclick="eliminar()">Quitar</button>
         </div>
 
-        <input type="hidden" value="" id="idProducto">
-        <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" id="btnPop" onclick="añadir()">Añadir</button>
-        <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" id="btnEliminar" onclick="eliminar()">Quitar</button>
     </div>
-
 </div>
-
 
 <script src="js/gmaps.js"></script>       
 <script>
+    
+    var mapa, lng, lat;
+    
+    $(document).ready(function(){
+        
+        mostrarDatos();
+        
+    });
+    
+    function initialize() {
+        mapa = new GMaps({
+                        div: '#mapa',
+                        lat: 0,
+                        lng: 0,
+                        zoom: 13,
+                        zoomControl: false,
+                        panControl: false,
+                        streetViewControl: false,
+                        mapTypeControl: false
+                    });
+    }
+
+    function loadScript() {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyBAibBz2Z0H3jFKhC9zguoL9jNU4fwlQGw&sensor=true&libraries=geometry&callback=initialize';
+      document.body.appendChild(script);
+    }
+    
+    function mostrarDatos(){
+        cargarLista();
+    }
+    
+    
     function reset() {
         $("#canti").val("");
         $("#indicaciones").val("");
         $("#btnPop").text("Añadir");
         $("#btnEliminar").hide();
     }
-            var mapa, lng, lat;
+    
+    function cargarLista() {
 
-            document.addEventListener("deviceready", onDeviceReady, false);
-            document.addEventListener("menubutton", onMenuKeyDown, false);
-
-            function onMenuKeyDown() {
-                $("#btnMenu").click();
+        var idRestaurante = localStorage.getItem("idRestaurante");
+        //var url = "http://192.168.1.33/domicilios/restaurante/consultarRestaurante";
+        var url = "http://admin.blinkmanager.com/restaurante/consultarRestaurante";
+        //var url = "/domicilios/restaurante/consultarRestaurante";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+                idRestaurante: idRestaurante
             }
+        })
+                .done(function (msg) {
 
+                    var json = eval("(" + msg + ")");
+                    if (json.estado == "a") {
+                        $("#rest").text(json.nombre);
+                    } else if (json.estado == "c") {
+                        $("#rest").html(json.nombre + " <span style='font-size: 9px'> (cerrado) </span>");
+                    }
+                    $("#estado").val(json.estado);
+                    $("#descripcion").text(json.descripcion);
+                    //$("#telefono").append(json.telefono);
+                    $("#direccion").append(json.direccion);
+                    agregarRuta(json.lat, json.lng);
+
+                });
+
+    }
+    
+            
+
+            //document.addEventListener("deviceready", onDeviceReady, false);
+           
             function onDeviceReady() {
                 var $this = $(this),
                         theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
@@ -118,7 +180,7 @@
                         streetViewControl: false,
                         mapTypeControl: false
                     });
-                    cargarLista();
+                    
                 }, function () {
                     alert("Error al Obtener la Posición de su dispositivo, intente activar el GPS !");
                     location.href = "index.html";
@@ -126,36 +188,7 @@
 
             }
 
-            function cargarLista() {
-
-                var idRestaurante = localStorage.getItem("idRestaurante");
-                //var url = "http://192.168.1.33/domicilios/restaurante/consultarRestaurante";
-                var url = "http://admin.blinkmanager.com/restaurante/consultarRestaurante";
-                //var url = "/domicilios/restaurante/consultarRestaurante";
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: {
-                        idRestaurante: idRestaurante
-                    }
-                })
-                        .done(function (msg) {
-
-                            var json = eval("(" + msg + ")");
-                            if (json.estado == "a") {
-                                $("#rest").text(json.nombre);
-                            } else if (json.estado == "c") {
-                                $("#rest").html(json.nombre + " <span style='font-size: 9px'> (cerrado) </span>");
-                            }
-                            $("#estado").val(json.estado);
-                            $("#descripcion").text(json.descripcion);
-                            //$("#telefono").append(json.telefono);
-                            $("#direccion").append(json.direccion);
-                            agregarRuta(json.lat, json.lng);
-
-                        });
-
-            }
+            
 
             function agregarRuta(latDestino, lngDestino) {
 
