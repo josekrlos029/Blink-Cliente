@@ -238,7 +238,7 @@ var page = {
     mostrarRestaurante: function(){
         
         //$( "#mainPage" ).pagecontainer( "load", "diligenciasForm.html", { showLoadMsg: false } );
-        app.insertPage("mostrarRestaurante.html", "#mainPage", 1,true);
+        app.insertPage("mostrarRestaurante.html", "#mainPage", 2,true);
         
     },
     

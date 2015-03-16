@@ -66,29 +66,48 @@
 
     </div>
 </div>
-
 <script src="js/gmaps.js"></script>       
 <script>
     
     var mapa, lng, lat;
+    document.addEventListener("deviceready", onDeviceReady, false);
+    
+    function onDeviceReady() {
+                
+        initialize(); 
+
+    }
+
     
     $(document).ready(function(){
+        $("#pageRestaurante").trigger("create");
+        $("#img").attr("src", 'http://admin.blinkmanager.com/utiles/imagenes/fotos/' + localStorage.getItem("idRestaurante") + '.png');
         
         mostrarDatos();
         
     });
     
     function initialize() {
-        mapa = new GMaps({
-                        div: '#mapa',
-                        lat: 0,
-                        lng: 0,
-                        zoom: 13,
-                        zoomControl: false,
-                        panControl: false,
-                        streetViewControl: false,
-                        mapTypeControl: false
-                    });
+        
+        navigator.geolocation.getCurrentPosition(function (position) {
+            
+            lat = position.coords.latitude;
+            lng = position.coords.longitude;
+            mapa = new GMaps({
+                div: '#mapa',
+                lat: lat,
+                lng: lng,
+                zoom: 13,
+                zoomControl: false,
+                panControl: false,
+                streetViewControl: false,
+                mapTypeControl: false
+            });
+
+        }, function () {
+            alert("Error al Obtener la Posición de su dispositivo, intente activar el GPS !");
+            location.href = "index.html";
+        }, {enableHighAccuracy: true});
     }
 
     function loadScript() {
@@ -99,6 +118,11 @@
     }
     
     function mostrarDatos(){
+        $("#btnEliminar").hide();
+        $("#slider").responsiveSlides({
+            maxwidth: 800,
+            speed: 800
+        });
         cargarLista();
     }
     
@@ -111,7 +135,21 @@
     }
     
     function cargarLista() {
-
+        
+        var $this = $(this),
+                        theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
+                        msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
+                        textVisible = $this.jqmData("textvisible") || $.mobile.loader.prototype.options.textVisible,
+                        textonly = !!$this.jqmData("textonly");
+                html = $this.jqmData("html") || "";
+                $.mobile.loading("show", {
+                    text: msgText,
+                    textVisible: textVisible,
+                    theme: theme,
+                    textonly: textonly,
+                    html: html
+                });
+        
         var idRestaurante = localStorage.getItem("idRestaurante");
         //var url = "http://192.168.1.33/domicilios/restaurante/consultarRestaurante";
         var url = "http://admin.blinkmanager.com/restaurante/consultarRestaurante";
@@ -141,122 +179,73 @@
 
     }
     
-            
+    function agregarRuta(latDestino, lngDestino) {
 
-            //document.addEventListener("deviceready", onDeviceReady, false);
-           
-            function onDeviceReady() {
-                var $this = $(this),
-                        theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
-                        msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
-                        textVisible = $this.jqmData("textvisible") || $.mobile.loader.prototype.options.textVisible,
-                        textonly = !!$this.jqmData("textonly");
-                html = $this.jqmData("html") || "";
-                $.mobile.loading("show", {
-                    text: msgText,
-                    textVisible: textVisible,
-                    theme: theme,
-                    textonly: textonly,
-                    html: html
-                });
-                $("#img").attr("src", 'http://admin.blinkmanager.com/utiles/imagenes/fotos/' + localStorage.getItem("idRestaurante") + '.png');
+        var string = 'http://maps.googleapis.com/maps/api/distancematrix/json?origins=' + lat + ',' + lng + '&destinations=' + latDestino + ',' + lngDestino + '&mode=driving&language=es&sensor=false';
 
-                $("#btnEliminar").hide();
-                $("#slider").responsiveSlides({
-                    maxwidth: 800,
-                    speed: 800
+        $.ajax({
+            type: "POST",
+            url: string,
+            data: {},
+            dataType: "json"
+        })
+                .done(function (msg) {
+
+                    $("#distancia").append("Distancia: " + msg.rows[0].elements[0].distance.text);
+                    //$("#tiempo").append(msg.rows[0].elements[0].duration.text);
                 });
 
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    lat = position.coords.latitude;
-                    lng = position.coords.longitude;
-                    mapa = new GMaps({
-                        div: '#mapa',
-                        lat: lat,
-                        lng: lng,
-                        zoom: 13,
-                        zoomControl: false,
-                        panControl: false,
-                        streetViewControl: false,
-                        mapTypeControl: false
-                    });
-                    
-                }, function () {
-                    alert("Error al Obtener la Posición de su dispositivo, intente activar el GPS !");
-                    location.href = "index.html";
-                }, {enableHighAccuracy: true});
+        mapa.addMarker({
+            lat: lat,
+            lng: lng,
+            title: 'Mi ubicación',
+            animation: google.maps.Animation.DROP,
+            icon: "image/map-user.png"
 
+        });
+
+        mapa.addMarker({
+            lat: latDestino,
+            lng: lngDestino,
+            title: 'Destino',
+            animation: google.maps.Animation.DROP,
+            icon: "http://admin.blinkmanager.com/utiles/imagenes/marcadores/" + localStorage.getItem("idRestaurante") + ".png"
+        });
+        mapa.drawRoute({
+            origin: [lat, lng],
+            destination: [latDestino, lngDestino],
+            travelMode: 'driving',
+            strokeColor: '#131540',
+            strokeOpacity: 0.6,
+            strokeWeight: 6
+        });
+        menu();
+        $.mobile.loading("hide");
+    }
+
+    function menu() {
+        var idRestaurante = localStorage.getItem("idRestaurante");
+        var url = "http://admin.blinkmanager.com/restaurante/menu";
+        //var url = "http://192.168.1.33/domicilios/restaurante/menu";
+        //var url = "/domicilios/restaurante/menu";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+                idRestaurante: idRestaurante
             }
+        })
+                .done(function (msg) {
+                    $("#two").html(msg);
+                    setTimeout(function () {
+                        $('#lista').trigger('create');
+                        $(".l1").trigger('create');
+                        $(".l2").trigger('create');
 
-            
-
-            function agregarRuta(latDestino, lngDestino) {
-
-                var string = 'http://maps.googleapis.com/maps/api/distancematrix/json?origins=' + lat + ',' + lng + '&destinations=' + latDestino + ',' + lngDestino + '&mode=driving&language=es&sensor=false';
-
-                $.ajax({
-                    type: "POST",
-                    url: string,
-                    data: {},
-                    dataType: "json"
-                })
-                        .done(function (msg) {
-
-                            $("#distancia").append("Distancia: " + msg.rows[0].elements[0].distance.text);
-                            //$("#tiempo").append(msg.rows[0].elements[0].duration.text);
-                        });
-
-                mapa.addMarker({
-                    lat: lat,
-                    lng: lng,
-                    title: 'Mi ubicación',
-                    animation: google.maps.Animation.DROP,
-                    icon: "image/map-user.png"
-
+                    }, 2000);
                 });
 
-                mapa.addMarker({
-                    lat: latDestino,
-                    lng: lngDestino,
-                    title: 'Destino',
-                    animation: google.maps.Animation.DROP,
-                    icon: "http://admin.blinkmanager.com/utiles/imagenes/marcadores/" + localStorage.getItem("idRestaurante") + ".png"
-                });
-                mapa.drawRoute({
-                    origin: [lat, lng],
-                    destination: [latDestino, lngDestino],
-                    travelMode: 'driving',
-                    strokeColor: '#131540',
-                    strokeOpacity: 0.6,
-                    strokeWeight: 6
-                });
-                menu();
-                $.mobile.loading("hide");
-            }
-
-            function menu() {
-                var idRestaurante = localStorage.getItem("idRestaurante");
-                var url = "http://admin.blinkmanager.com/restaurante/menu";
-                //var url = "http://192.168.1.33/domicilios/restaurante/menu";
-                //var url = "/domicilios/restaurante/menu";
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: {
-                        idRestaurante: idRestaurante
-                    }
-                })
-                        .done(function (msg) {
-                            $("#two").html(msg);
-                            setTimeout(function () {
-                                $('#lista').trigger('create');
-                                $(".l1").trigger('create');
-                                $(".l2").trigger('create');
-
-                            }, 2000);
-                        });
-
-            }
+    }
 
 </script>
 </body>
