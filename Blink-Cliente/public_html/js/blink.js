@@ -242,6 +242,13 @@ var page = {
         
     },
     
+    mostrarServicio: function(){
+        
+        //$( "#mainPage" ).pagecontainer( "load", "diligenciasForm.html", { showLoadMsg: false } );
+        app.insertPage("mostrarSitioServicio.html", "#mainPage", 4,true);
+        
+    },
+    
     configBody: function(){
         
         $("#mainPage").height($(window).height() - $("#head").height() - $("#foot").height() ).css({
