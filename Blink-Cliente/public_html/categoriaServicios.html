@@ -1,0 +1,20 @@
+<div data-rol="page" id="pageCategoriaServicios"></div>
+<script>
+    
+    $(document).ready(function(){
+       
+       app.cargarCategoriasServicios("#pageCategoriaServicios");
+       
+    });
+    
+    
+    function mostrarRestaurantes(idTipo){
+        localStorage.setItem("idTipo", idTipo);
+        app.cargarSitiosServicio("#pageCategoriaServicios");
+        
+    }
+    
+    function mostrarRestaurante(){
+        
+    }
+</script>

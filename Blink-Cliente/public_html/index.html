@@ -19,37 +19,36 @@ and open the template in the editor.
         <div data-role="page" id="pagina">
 
             <div data-role="header" id="head" data-position="fixed" data-fullscreen="false" style="padding: 0">
+                <a href="#" style="border: none; background-color: #f7931e;  box-shadow: none; margin-top: 7px" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-btn-a ui-btn-inline">Atras</a>
                 <h3><img  src="image/logo.png" style="width: 80px;margin-top: 4px" /></h3>
-                <a href="#menu" id="btnMenu" style="border: none; background-color: #f7931e; box-shadow: none; margin-top: 7px" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-shop ui-btn-icon-notext ui-btn-a ui-btn-inline">Menù</a>
+                <a href="#menu" id="btnMenu" style="border: none; background-color: #f7931e; box-shadow: none; margin-top: 6px" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-shop ui-btn-icon-notext ui-btn-a ui-btn-inline">Menù</a>
             </div>
-
+            
+            
             <div role="main" id="mainPage" class="ui-content" style="padding: 0; margin: 0;">
-
-
-
-
+                
             </div>
 
             <div data-role="footer" data-position="fixed" data-fullscreen="false"  id="foot" style="overflow:hidden;">
                 <div data-role="navbar" >
                     <ul>
                         <li>
-                            <a href="#" data-icon="clock" class="ui-btn-active" id="tabDiligencias">
+                            <a onclick="page.diligencias();" href="#" data-icon="clock" class="tabtab ui-btn-active" id="tabDiligencias">
                                 <p class="smallLetter">Diligencias</p>
                             </a>
                         </li>
                         <li>
-                            <a data-ajax="false" href="#" data-icon="location" id="tabDomicilios" >
-                                <p class="smallLetter">Restaurantes</p>
+                            <a onclick="page.pedidos();" data-ajax="false" href="#" class="tabtab" data-icon="location" id="tabDomicilios" >
+                                <p class="smallLetter">Pedidos</p>
                             </a>
                         </li>
                         <li>
-                            <a href="#" data-icon="star" data-ajax="false" id="tabLicores">
+                            <a onclick="page.licores();" href="#" data-icon="star" data-ajax="false" class="tabtab" id="tabLicores">
                                 <p class="smallLetter">Licores</p>
                             </a>
                         </li>                
                         <li>
-                            <a href=#" data-icon="info" data-ajax="false" id="tabServicios">
+                            <a onclick="page.servicios();" href=#" data-icon="info" class="tabtab" data-ajax="false" id="tabServicios">
                                 <p class="smallLetter">Otros</p>
                             </a>
                         </li>
@@ -68,14 +67,14 @@ and open the template in the editor.
         <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
         <script>
 
-                            $(document).ready(function () {
-                                var cadena = $("#foot").html();
+            $(document).ready(function () {
+                var cadena = $("#foot").html();
 
-                                $("#foot").html(cadena.replace(/&nbsp;/g, ''));
-                                page.configBody();
-                                page.diligencias();
+                $("#foot").html(cadena.replace(/&nbsp;/g, ''));
+                page.configBody();
+                page.diligencias();
 
-                            });
+            });
 
                             //document.addEventListener("deviceready", onDeviceReady, false);
 
