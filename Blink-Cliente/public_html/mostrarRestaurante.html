@@ -74,7 +74,7 @@
     $(document).ready(function(){
         $("#pageRestaurante").trigger("create");
         $("#img").attr("src", 'http://admin.blinkmanager.com/utiles/imagenes/fotos/' + localStorage.getItem("idRestaurante") + '.png');
-        initialize(); 
+        loadScript(); 
         mostrarDatos();
         
     });
@@ -85,6 +85,7 @@
             
             lat = position.coords.latitude;
             lng = position.coords.longitude;
+            
             mapa = new GMaps({
                 div: '#mapa',
                 lat: lat,
@@ -143,6 +144,7 @@
                 });
         
         var idRestaurante = localStorage.getItem("idRestaurante");
+        
         //var url = "http://192.168.1.33/domicilios/restaurante/consultarRestaurante";
         var url = "http://admin.blinkmanager.com/restaurante/consultarRestaurante";
         //var url = "/domicilios/restaurante/consultarRestaurante";
@@ -165,8 +167,11 @@
                     $("#descripcion").text(json.descripcion);
                     //$("#telefono").append(json.telefono);
                     $("#direccion").append(json.direccion);
+                    
+                    
                     agregarRuta(json.lat, json.lng);
-
+                    
+                    $.mobile.loading("hide");
                 });
 
     }
@@ -211,8 +216,8 @@
             strokeOpacity: 0.6,
             strokeWeight: 6
         });
-        menu();
-        $.mobile.loading("hide");
+        //menu();
+        
     }
 
     function menu() {
