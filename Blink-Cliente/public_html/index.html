@@ -22,7 +22,7 @@ and open the template in the editor.
             <div data-role="header" id="head" data-position="fixed" data-fullscreen="false" style="padding: 0">
                 <a href="#" style="border: none; background-color: #f7931e;  box-shadow: none; margin-top: 7px" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext ui-btn-a ui-btn-inline">Atras</a>
                 <h3><img  src="image/logo.png" style="width: 80px;margin-top: 4px" /></h3>
-                <a href="#menu" id="btnMenu" style="border: none; background-color: #f7931e; box-shadow: none; margin-top: 6px" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-shop ui-btn-icon-notext ui-btn-a ui-btn-inline">Menù</a>
+                <a href="#" id="btnCarrito" onclick="page.carrito();" style="border: none; background-color: #f7931e; box-shadow: none; margin-top: 6px" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-shop ui-btn-icon-notext ui-btn-a ui-btn-inline">Menù</a>
             </div>
             
             
@@ -74,7 +74,7 @@ and open the template in the editor.
                 $("#foot").html(cadena.replace(/&nbsp;/g, ''));
                 page.configBody();
                 page.diligencias();
-
+                app.crearDb();
             });
 
             document.addEventListener("deviceready", onDeviceReady, false);

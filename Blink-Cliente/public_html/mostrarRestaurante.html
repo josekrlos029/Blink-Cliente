@@ -26,14 +26,14 @@
                     <div class="ui-grid-a">
                         <div class="ui-block-a"><div id="telefono" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-phone ui-btn-icon-notext ui-btn-inline">Delete</a></div></div>
                         <div class="ui-block-b" style="margin-left: -10%;width: 60%;"><div id="direccion" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-location ui-btn-icon-notext ui-btn-inline">Delete</a></div></div>
-                        <div class="ui-block-a"><div id="tiempo" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-clock ui-btn-icon-notext ui-btn-inline">Delete</a></div></div>
-                        <div class="ui-block-b" style="margin-left: -10%;width: 60%;"><div id="distancia" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-navigation ui-btn-icon-notext ui-btn-inline">Delete</a></div></div>
+<!--                        <div class="ui-block-a"><div id="tiempo" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-clock ui-btn-icon-notext ui-btn-inline">Delete</a></div></div>
+                        <div class="ui-block-b" style="margin-left: -10%;width: 60%;"><div id="distancia" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-navigation ui-btn-icon-notext ui-btn-inline">Delete</a></div></div>-->
                     </div>
                 </div>
                 <br>
-                <div class="ui-body ui-body-a ui-corner-all">
+<!--                <div class="ui-body ui-body-a ui-corner-all">
                     <div id="mapa" style="width: 100%; height: 300px;" ></div>
-                </div>
+                </div>-->
 
             </div>
             <div id="two">
@@ -46,7 +46,7 @@
     <div data-role="popup" id="popup" data-dismissible="false" data-overlay-theme="b" data-theme="b" class="ui-corner-all">
 
         <div style="padding:10px 20px;">
-            <a href="#" data-rel="back" id="close" onclick="reset();" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <a href="#" data-rel="back" id="close" onclick="app.reset();" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
             <h3 id="titu" style="text-align: center"></h3>                        
             <p style="text-align: center" id="desc"></p>
             <p style="text-align: center; font-weight: bold" id="prec"></p>
@@ -60,8 +60,8 @@
             </div>
 
             <input type="hidden" value="" id="idProducto">
-            <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" id="btnPop" onclick="añadir()">Añadir</button>
-            <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" id="btnEliminar" onclick="eliminar()">Quitar</button>
+            <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" id="btnPop" onclick="app.añadir()">Añadir</button>
+            <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" id="btnEliminar" onclick="app.eliminar()">Quitar</button>
         </div>
 
     </div>
@@ -74,7 +74,7 @@
     $(document).ready(function(){
         $("#pageRestaurante").trigger("create");
         $("#img").attr("src", 'http://admin.blinkmanager.com/utiles/imagenes/fotos/' + localStorage.getItem("idRestaurante") + '.png');
-        loadScript(); 
+        //loadScript(); 
         mostrarDatos();
         
     });
@@ -168,8 +168,8 @@
                     //$("#telefono").append(json.telefono);
                     $("#direccion").append(json.direccion);
                     
-                    
-                    agregarRuta(json.lat, json.lng);
+                    menu();
+                    //agregarRuta(json.lat, json.lng);
                     
                     $.mobile.loading("hide");
                 });
@@ -189,10 +189,10 @@
                 .done(function (msg) {
 
                     $("#distancia").append("Distancia: " + msg.rows[0].elements[0].distance.text);
-                    //$("#tiempo").append(msg.rows[0].elements[0].duration.text);
+                    $("#tiempo").append(msg.rows[0].elements[0].duration.text);
                 });
 
-        mapa.addMarker({
+        /*mapa.addMarker({
             lat: lat,
             lng: lng,
             title: 'Mi ubicación',
@@ -215,7 +215,7 @@
             strokeColor: '#131540',
             strokeOpacity: 0.6,
             strokeWeight: 6
-        });
+        });*/
         //menu();
         
     }
@@ -243,7 +243,37 @@
                 });
 
     }
+    
+    function pop(idProducto, nombre, descripcion, precio, estado) {
 
+    if ($("#estado").val() == "c") {
+        alert("No puedes pedir en este sitio pues se encuentra cerrado");
+        $("#close").click();
+    } else if (estado == "n") {
+        alert("Lo sentimos, por el momento este producto no está disponible");
+        $("#close").click();
+    } else {
+        var db = window.openDatabase(app.TABLE_NAME, "1.0", app.BD_NAME, 1000000);
+
+        db.transaction(function(tx) {
+            tx.executeSql('SELECT * FROM lista WHERE id=?', [idProducto], function(tx, results) {
+                var len = results.rows.length;
+                if (len != 0) {
+                    $("#canti").val(parseInt(results.rows.item(0).cantidad));
+                    $("#indicaciones").val(results.rows.item(0).indicaciones);
+                    $("#btnPop").text("Modificar");
+                    $("#btnEliminar").show();
+                }
+            }, null);
+        });
+        $("#titu").text(nombre);
+        $("#desc").text(descripcion);
+        $("#prec").text("$" + precio);
+        $("#idProducto").val(idProducto);
+    }
+
+
+}
 </script>
 </body>
 </html>

@@ -1,5 +1,8 @@
 var app ={
     
+    BD_NAME: "listacompraDBBLink",
+    TABLE_NAME: "carritoBlink",
+    
     diligencia: { },
     
     
@@ -181,7 +184,7 @@ var app ={
                     html: html
                 });
                 
-                var idRestaurante = idRestaurante;
+                //var idRestaurante = idRestaurante;
                 var url = "http://admin.blinkmanager.com/restaurante/menu";
                 //var url = "http://192.168.1.33/domicilios/restaurante/menu";
                 //var url = "/domicilios/restaurante/menu";
@@ -199,7 +202,118 @@ var app ={
                         });
 
             
+    },
+    
+    insert: function(precio){
+        var db = window.openDatabase(app.TABLE_NAME, "1.0", app.BD_NAME, 1000000);
+        var cantidad = $("#canti").val();
+        var indicaciones = $("#indicaciones").val();
+
+        db.transaction(function(tx) {
+            tx.executeSql('INSERT INTO lista (id, nombre, descripcion, precio, cantidad, idRestaurante, indicaciones) VALUES (?, ?, ?, ?, ?, ?, ?)', [$("#idProducto").val(), $("#titu").text(), $("#desc").text(), precio, cantidad, localStorage.getItem("idRestaurante"), indicaciones]);
+            app.reset();
+            localStorage.setItem("rows", "true");
+        });
+        $("#close").click();
+    },
+    
+    update: function(){
+        var cantidad = $("#canti").val();
+        var indicaciones = $("#indicaciones").val();
+        var db = window.openDatabase(app.TABLE_NAME, "1.0", app.BD_NAME, 1000000);
+        db.transaction(function(tx) {
+            tx.executeSql('UPDATE lista SET cantidad=?, indicaciones=?  WHERE id=?', [cantidad, indicaciones, $("#idProducto").val()]);
+            app.reset();
+            app.comprobarLista();
+            
+        });
+        $("#close").click();
+    },
+    
+    eliminar: function(){
+        var db = window.openDatabase(app.TABLE_NAME, "1.0", app.BD_NAME, 1000000);
+        db.transaction(function(tx) {
+            tx.executeSql('DELETE FROM lista WHERE id=?', [$("#idProducto").val()]);
+            app.reset();
+            app.comprobarLista();
+            
+        });
+        $("#close").click();
+    },
+    
+    eliminarLista: function(){
+        var db = window.openDatabase(app.TABLE_NAME, "1.0", app.BD_NAME, 1000000);
+        db.transaction(function(tx) {
+            tx.executeSql('DELETE FROM lista');
+            localStorage.setItem("rows", "false");
+            page.diligencias();
+        });
+    },
+    
+    crearDb: function(){
+        var db = window.openDatabase(app.TABLE_NAME, "1.0", app.BD_NAME, 1000000);
+        db.transaction(function(tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS lista (id unique, nombre, descripcion, precio, cantidad, indicaciones, idRestaurante)');
+        });
+    },
+    
+    añadir: function(){
+        var db = window.openDatabase(app.TABLE_NAME, "1.0", app.BD_NAME, 1000000);
+        var precio = $("#prec").text();
+
+        precio = precio.replace('$', '');
+        if ($("#btnPop").text() == 'Añadir') {
+
+            if ($("#canti").val() == "" || $("#canti").val() == null || $("#canti").val() == " ") {
+                alert("Por Favor digite una cantidad Valida");
+            } else {
+
+                db.transaction(function(tx) {
+                    tx.executeSql('SELECT * FROM lista', [], function(tx, results) {
+                        var len = results.rows.length;
+                        if (len == 0) {
+                            app.insert(precio);
+                        } else {
+                            if (results.rows.item(0).idRestaurante == localStorage.getItem("idRestaurante")) {
+                                app.insert(precio);
+                            } else {
+                                alert("Ya tienes un productos de otro restaurante en el carrito de compras, puedes borrar el carrito de compras actual o hacer el pedido y continuar con otro restaurante ! ");
+                            }
+                        }
+
+                    }, null);
+                });
+
+            }
+        } else {
+            app.update();
+        }
+    },
+    
+    reset: function(){
+        
+        $("#canti").val("");
+        $("#indicaciones").val("");
+        $("#btnPop").text("Añadir");
+        $("#btnEliminar").hide();
+
+    },
+    
+    comprobarLista: function(){
+        var db = window.openDatabase(app.TABLE_NAME, "1.0", app.BD_NAME, 1000000);
+        db.transaction(function(tx) {
+            tx.executeSql('SELECT * FROM lista', [], function(tx, results) {
+                var len = results.rows.length;
+                if (len == 0) {
+                    localStorage.setItem("rows", "false");
+                }
+            }, null);
+        });
     }
+    
+    
+    
+    
     
 };
 
@@ -210,12 +324,13 @@ var page = {
         
     },
     
+    pedido: function(){
+        
+    },
     
     diligencias: function(){
         
         app.insertPage("diligencias.html", "#mainPage", 1,true);
-        
-        
         
     },
     
@@ -225,6 +340,23 @@ var page = {
     
     licores: function(){
         app.insertPage("licores.html", "#mainPage", 3,true);
+    },
+    
+    carrito: function(){
+        var db = window.openDatabase(app.TABLE_NAME, "1.0", app.BD_NAME, 1000000);
+        db.transaction(function(tx) {
+            tx.executeSql('SELECT * FROM lista', [], function(tx, results) {
+                var len = results.rows.length;
+                if (len == 0) {
+                    alert("Carrito Vacio");
+                    localStorage.setItem("rows", "false");
+                } else {
+                    app.insertPage("carrito.html", "#mainPage", 0,true);
+                }
+            });
+            
+        });  
+        
     },
     
     formDiligencias: function(){

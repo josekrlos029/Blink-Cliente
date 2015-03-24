@@ -666,11 +666,7 @@ function obtenerPosicion(){
 
 
 function crearDb() {
-    var db = window.openDatabase("carritoBlink", "1.0", "listacompraDBBlink", 1000000);
-    db.transaction(function(tx) {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS lista (id unique, nombre, descripcion, precio, cantidad, indicaciones, idRestaurante)');
-    });
-    localStorage.setItem("dbExist", "true");
+    
 }
 
 function eliminarDb() {
