@@ -19,6 +19,7 @@
     <preference name="orientation" value="portrait" />
     
     <icon src="image/IconoiOS.jpg" gap:role="default" />
+    
 	<icon src="image/IconoiOS.jpg" width="96" height="96" />
 	<icon src="image/IconoiOS.jpg" width="72" height="72" />
 	<icon src="image/IconoiOS.jpg" width="48" height="48" />
