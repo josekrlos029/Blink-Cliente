@@ -79,8 +79,21 @@ and open the template in the editor.
             document.addEventListener("deviceready", onDeviceReady, false);
 
             function onDeviceReady() {
+                document.addEventListener("backbutton", onBackKeyPress, false);
                 app.initPush();   
             }
+            
+            function onBackKeyPress() {
+           
+                if (confirm("Estas Seguro de salir de la app?")) {
+                    /* Here is where my AJAX code for logging off goes */
+                }
+                else {
+                    return false;
+                }
+            }
+        
+       
         </script>
     </body>
 </html>
