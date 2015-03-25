@@ -8,7 +8,7 @@
         <center><div class="ui-block-b"><div id="total" class="ui-nodisc-icon ui-alt-icon" style="font-size: 11px"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-shop ui-btn-icon-notext ui-btn-inline">Delete</a></div></div></center>
         <br>
         <br>
-        <a href="#" onclick="menu()" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-eye ui-btn-icon-right">Ver Menú</a>
+        <a href="#" onclick="page.mostrarRestaurante();" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-eye ui-btn-icon-right">Ver sitio</a>
         <a href="#popupPedido" id="btnPopupPedido" data-rel="popup" data-position-to="window" data-transition="flow" style="background-color: #84aa1f; color: white; text-decoration: none;text-shadow: none" class="ui-btn ui-shadow ui-corner-all ui-icon-check ui-btn-icon-right">Hacer Pedido</a>
         <a style="background-color: #be1522; color: white; text-decoration: none;text-shadow: none" href="#" onclick="borrarCarrito()" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-right">Borrar Pedido</a>
     </div>
@@ -290,15 +290,35 @@
                                    idRestaurante: idRestaurante,
                                    direccion: direccion,
                                    referencia: referencias,
-                                   lat: lt,
-                                   lng: ln,
                                    telefono: telefono,
                                    billete: billete,
-                                   ciudad: "Valledupar"
+                                   ciudad: "Valledupar",
+                                   regid: localStorage.getItem("regId")
                                };
+                               var url = "http://admin.blinkmanager.com/restaurante/registrarDomicilio";
 
-                               guardar(data);
-                           }
+                               $.ajax({
+                                    type: "POST",
+                                    url: url,
+                                    data: data
+                                })
+                                        .done(function(msg) {
+
+                                            var json = eval("(" + msg + ")");
+                                            if (json.msj == "exito") {
+                                                alert("Tu pedido Llegará en cualquier momento ! ");
+                                                eliminarLista();
+
+                                            }else if (json.msj == "cerrado") {
+                                                alert("Blink está cerrado consulta los horarios de operación !");
+
+                                            } else {
+                                                alert("Error");
+                                            }
+                                            $("#btnEnvio").removeAttr("disabled");
+                                            $.mobile.loading("hide");
+                                        });
+                            }
 
                        });
                    });

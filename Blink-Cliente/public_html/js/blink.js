@@ -309,6 +309,22 @@ var app ={
                 }
             }, null);
         });
+    }, 
+    
+    initPush: function (){
+        var pushNotification = window.plugins.pushNotification;
+
+        if (device.platform == 'android' || device.platform == 'Android')
+        {
+            //PARA ANDROID
+            pushNotification.register(
+                    successHandler,
+                    errorHandler, {
+                        "senderID": "293252857632", //ID del proyecto  (Debes crear un proyecto en google developers -> https://console.developers.google.com/project )
+                        "ecb": "onNotificationGCM"  //Metodo cuando llega una notificación
+                    });
+        }
+       
     }
     
     
@@ -414,3 +430,56 @@ var page = {
     stackBack:{}
      
 };
+
+function onNotificationGCM(e) {
+
+    switch (e.event)
+    {
+        case 'registered':
+            if (e.regid.length > 0)
+            {
+                localStorage.setItem("regId", e.regid);
+                alert(e.regid);
+            }
+            break;
+
+        case 'message':
+            // if this flag is set, this notification happened while we were in the foreground.
+            // you might want to play a sound to get the user's attention, throw up a dialog, etc.
+            if (e.foreground)
+            {
+                //$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
+                
+                navigator.notification.vibrate(500);
+                alert(e.payload.message);
+                
+            }
+            else
+            {  // otherwise we were launched because the user touched a notification in the notification tray.
+                if (e.coldstart)
+                {
+                    
+                    alert(e.payload.message);
+                    
+                }
+                else
+                {
+                   
+                    alert(e.payload.message);
+                    
+                }
+            }
+
+            //$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+            //$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+            break;
+
+        case 'error':
+            alert('Error: ' + e.msg);
+            break;
+
+        default:
+            //$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
+            break;
+    }
+}

@@ -5,21 +5,6 @@
     <label for="descripcion"><b>*Descripción del Servicio:</b></label>
     <textarea cols="40" rows="8" name="descripcion" id="descripcion" placeholder="Escriba aqui la descripción del pedido, Sea muy claro para prestar un servicio eficiente..."></textarea>
 </div>  
-<h3>Nuestros Servicios</h3>
-
-    <fieldset data-role="controlgroup">
-        <legend>*Escoge tu Servicio:</legend>
-        <input type="radio" name="servicio" id="radio-choice-v-2a" value="compra">
-        <label for="radio-choice-v-2a">Compras <strong>$3000</strong></label>
-        <input type="radio" name="servicio" id="radio-choice-v-2b" value="consignacion">
-        <label for="radio-choice-v-2b">Consignaciones <strong>$4000</strong></label>
-        <input type="radio" name="servicio" id="radio-choice-v-2c" value="envio">
-        <label for="radio-choice-v-2c">Envios <strong>$2000</strong></label>
-        <input type="radio" name="servicio" id="radio-choice-v-2d" value="factura">
-        <label for="radio-choice-v-2d">Pagos de Facturas <strong>$3000</strong></label>
-    </fieldset>
-
-<br>
 <div class="ui-field-contain">
     <label for="direccion"><b>*Origen:</b></label>
     <input type="text" name="direccion" id="direccion" placeholder="Ej: Cra 5c # 20 - 54" value="">
@@ -41,7 +26,7 @@
         <input type="number" max="12" min="8" name="telefono" id="telefono" placeholder="Teléfono" value="">
 </div>
 
-<a id="btnEnvio" style="background-color: #84aa1f; color: white; text-decoration: none;text-shadow: none" href="#" onclick="comprobarServicio();" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-check ui-btn-icon-right">Solicitar Mensajero</a>
+<a id="btnEnvio" style="background-color: #84aa1f; color: white; text-decoration: none;text-shadow: none" href="#" onclick="envio();" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-check ui-btn-icon-right">Solicitar Mensajero</a>
 </div>          
   </div>   
 <script>
@@ -54,103 +39,17 @@
         
     });
     
-    function onDeviceReady() {
-        $("#btnPopup").hide();
-
-        var $this = $(this),
-                theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
-                msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
-                textVisible = $this.jqmData("textvisible") || $.mobile.loader.prototype.options.textVisible,
-                textonly = !!$this.jqmData("textonly");
-        html = $this.jqmData("html") || "";
-        $.mobile.loading("show", {
-            text: msgText,
-            textVisible: textVisible,
-            theme: theme,
-            textonly: textonly,
-            html: html
-        });
-        $("#contFecha").hide();
-        $("#contHora").hide();
-        FB.init({appId: "1428385527442767", nativeInterface: CDV.FB, useCachedDialogs: false});
-
-        $("#mapa").height(200);
-        navigator.geolocation.getCurrentPosition(function(position) {
-            var lat = position.coords.latitude;
-            var lng = position.coords.longitude;
-
-            var geocoder = new google.maps.Geocoder();
-            var yourLocation = new google.maps.LatLng(lat, lng);
-            ubicarMapa(lat, lng);
-            geocoder.geocode({'latLng': yourLocation}, processGeocoder);
-
-        }, function() {
-            alert("Error al Obtener la Posición de su dispositivo, intente activar el GPS !");
-            location.href = "index.html";
-        }, {enableHighAccuracy: true});
-
-    }
-
-    function processGeocoder(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            if (results[0]) {
-                $("#direccion").val(results[0].formatted_address);
-            } else {
-                alert("Error al Obtener Dirección");
-            }
-        } else {
-            alert("Error al Obtener Dirección");
-        }
-    }
-
-    function ubicarMapa(lat, lng) {
-        mapa = new GMaps({
-            div: '#mapa',
-            lat: lat,
-            lng: lng,
-            zoom: 15,
-            zoomControl: false,
-            panControl: false,
-            streetViewControl: false,
-            mapTypeControl: false
-        });
-
-        agregarRuta(lat, lng);
-
-
-    }
-
-    function agregarRuta(lat, lng) {
-        lt = lat;
-        ln = lng;
-
-        mapa.addMarker({
-            lat: lat,
-            lng: lng,
-            title: 'Mi ubicación',
-            animation: google.maps.Animation.DROP,
-            icon:  "image/map-user.png"
-
-        });
-        $.mobile.loading("hide");
-
-    }
-
     function envio() {
-
-        var idUsuario= localStorage.getItem("idUsuario");
+        $("#btnEnvio").hide();
+       
         var direccion= $("#direccion").val();
         var referencia= $("#referencias").val();
-        var ciudad= localStorage.getItem("ubicacion");
-        var servicio= $("input[name='servicio']:checked").val();
+        var ciudad= "Valledupar";
         var telefono= $("#telefono").val();
-        var tipo= $("#tipo").val();
         var descripcion= $("#descripcion").val();
         var destino= $("#destino").val();
-        var fecha= $("#fecha").val();
-        var hora = $("#hora").val();
-
-        if(direccion=="" || direccion==undefined || direccion==null || destino=="" || destino==undefined || destino==null || telefono=="" ||telefono==undefined ||telefono==null || descripcion=="" ||descripcion==undefined ||descripcion==null || tipo=="" ||tipo==undefined || tipo==null || servicio=="" ||servicio==undefined || servicio==null){
+        
+        if(direccion=="" || direccion==undefined || direccion==null || destino=="" || destino==undefined || destino==null || telefono=="" ||telefono==undefined ||telefono==null || descripcion=="" ||descripcion==undefined ||descripcion==null){
 
             alert("Por Favor Completa los Campos Obligatorios (*)");
 
@@ -174,19 +73,13 @@
             $("#btnEnvio").attr("disabled","disabled");
 
             var data = {
-                idUsuario: idUsuario,
                 direccion: direccion,
                 referencia: referencia,
                 ciudad: ciudad,
-                lat: lt,
-                lng: ln,
-                servicio: servicio,
                 telefono: telefono,
-                tipo: tipo,
                 descripcion: descripcion,
                 destino: destino,
-                fecha: fecha,
-                hora: hora
+                regid: localStorage.getItem("regId")
             };
 
             var url = "http://admin.blinkmanager.com/restaurante/registrarServicio";
@@ -197,104 +90,23 @@
                 data: data
             })
                     .done(function(msg) {
-
+                        
+                        $("#btnEnvio").show();
+                
                         var json = eval("(" + msg + ")");
                         if (json.msj == "exito") {
                             alert("Tu Mensajero Llegará en cualquier momento a tu ubicación ");
-                            location.href="index.html";
+                            page.diligencias();
                         }else if (json.msj == "cerrado") {
-                            alert("TuDomicilio está cerrado consulta los horarios de operación !");   
+                            alert("Blink está cerrado consulta los horarios de operación !");   
                         } else {
                             alert("Error al hacer pedido, intenta mas tarde");
                         }
                         $.mobile.loading("hide");
-                        $("#btnEnvio").removeAttr("disabled");
+                        
 
                     });
 
         }
-    }
-    function facebook() {
-        $("#closeLogin").click();
-        if (localStorage.getItem("idUsuario") != "" && localStorage.getItem("idUsuario") != null) {
-            envio();
-        } else {
-            FB.login(
-                    function(response) {
-
-                        if (response.authResponse)
-                        {
-                            getUserInfo(); // Get User Information.
-                        } else
-                        {
-                            alert
-                                    ('Error al entrar con facebook, intentalo nuevamente, Recuerda: "No publicaremos nada a tu nombre"');
-                        }
-                    }, {scope: 'email,publish_actions'}
-            );
-        }
-
-    }
-    function getUserInfo() {
-        FB.api('/me', function(response) {
-
-            var regId = localStorage.getItem('regId');
-            if (regId != "" && regId != null) {
-                var persona = {idFace: response.id,
-                    nombres: response.first_name,
-                    apellidos: response.last_name,
-                    email: response.email,
-                    fechaNacimiento: response.birthday,
-                    regId: regId
-                };
-            }else{
-                var persona = {idFace: response.id,
-                    nombres: response.first_name,
-                    apellidos: response.last_name,
-                    email: response.email,
-                    fechaNacimiento: response.birthday,
-                    token: localStorage.getItem("token")
-                };
-            }
-
-            confirmarRegistro(persona);
-        });
-    }
-
-    function mostrarFecha(){
-        if($("#tipo").val()== "p"){
-            $("#contFecha").show();
-            $("#contHora").show();
-        }else{
-            $("#contFecha").hide(); 
-            $("#contHora").hide();
-        }
-    }
-
-//Consulta en la bd del servidor si el usuario Existe... Sino Existe Lo agrega como nuevo usuario de la App
-    function confirmarRegistro(persona) {
-        //var url = "http://192.168.1.33/domicilios/restaurante/confirmarRegistroFace";
-        var url = "http://admin.blinkmanager.com/restaurante/confirmarRegistroFace";
-
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: persona
-        })
-                .done(function(msg) {
-                    var json = eval("(" + msg + ")");
-                    if (json.msj === "autenticado") {
-                        localStorage.setItem('login', "true");
-                        localStorage.setItem('idFace', persona.idFace);
-                        localStorage.setItem('idUsuario', json.id);
-                        envio();
-                    } else if (json.msj === "registrado") {
-                        alert("Registro Exitoso");
-                        localStorage.setItem('login', "true");
-                        localStorage.setItem('idFace', persona.idFace);
-                        localStorage.setItem('idUsuario', json.id);
-                        envio();
-                    }
-                });
     }
 </script>
