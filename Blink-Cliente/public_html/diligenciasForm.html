@@ -79,6 +79,7 @@
                 telefono: telefono,
                 descripcion: descripcion,
                 destino: destino,
+                nombre:$("#nombre").val(),
                 regid: localStorage.getItem("regId")
             };
 
@@ -100,6 +101,7 @@
                         }else if (json.msj == "cerrado") {
                             alert("Blink está cerrado consulta los horarios de operación !");   
                         } else {
+                            alert(msg);
                             alert("Error al hacer pedido, intenta mas tarde");
                         }
                         $.mobile.loading("hide");
