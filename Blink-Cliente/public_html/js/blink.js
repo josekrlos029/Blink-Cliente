@@ -431,7 +431,7 @@ var page = {
      
 };
 function successHandler(result) {
- alert('result = ' + result);
+ //alert('result = ' + result);
 }
 
 function errorHandler(error) {
@@ -445,7 +445,7 @@ function onNotificationGCM(e) {
             if (e.regid.length > 0)
             {
                 localStorage.setItem("regId", e.regid);
-                alert(e.regid);
+                //alert(e.regid);
             }
             break;
 
