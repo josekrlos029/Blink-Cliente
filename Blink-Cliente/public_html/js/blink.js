@@ -430,7 +430,13 @@ var page = {
     stackBack:{}
      
 };
+function successHandler(result) {
+ alert('result = ' + result);
+}
 
+function errorHandler(error) {
+    alert('error = ' + error);
+}
 function onNotificationGCM(e) {
 
     switch (e.event)

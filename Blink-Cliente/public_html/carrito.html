@@ -243,7 +243,7 @@
             }
             
             function confirmarPedido(){
-                
+                $("#close2").click();
                 var nombre = $("#nombre").val();
                 var direccion = $("#direccion").val();
                 var telefono = $("#telefono").val();
@@ -307,7 +307,7 @@
                                             var json = eval("(" + msg + ")");
                                             if (json.msj == "exito") {
                                                 alert("Tu pedido Llegará en cualquier momento ! ");
-                                                eliminarLista();
+                                                borrarCarrito();
 
                                             }else if (json.msj == "cerrado") {
                                                 alert("Blink está cerrado consulta los horarios de operación !");
