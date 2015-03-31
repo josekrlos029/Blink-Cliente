@@ -243,7 +243,7 @@
             }
             
             function confirmarPedido(){
-                $("#close2").click();
+               
                 var nombre = $("#nombre").val();
                 var direccion = $("#direccion").val();
                 var telefono = $("#telefono").val();
@@ -308,13 +308,14 @@
                                             if (json.msj == "exito") {
                                                 alert("Tu pedido Llegará en cualquier momento ! ");
                                                 borrarCarrito();
+                                                 $("#close2").click();
 
                                             }else if (json.msj == "cerrado") {
                                                 alert("Blink está cerrado consulta los horarios de operación !");
-
+                                                $("#close2").click();
                                             } else {
-                                                //alert("Error");
-                                                alert(msg);
+                                                alert("Error");
+                                                //alert(msg);
                                             }
                                             $("#btnEnvio").removeAttr("disabled");
                                             $.mobile.loading("hide");
