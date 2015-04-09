@@ -39,7 +39,7 @@
     <div data-role="popup" id="popupPedido" data-overlay-theme="b" data-theme="b" class="ui-corner-all" data-dismissible="false">
 
         <div style="padding:10px 20px;">
-            <a href="#" data-rel="back" id="close2" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            
             <h3 style="text-align: center">Hacer Pedido</h3>                        
             <center><p><b>Valor del Domicilio: $2000 - $3000</b></p></center>
                     <div class="ui-field-contain">
@@ -63,6 +63,7 @@
                         <input type="text" name="billete" id="billete" placeholder="Ej: Dos billetes de 20.000" value="">
                     </div>
             <a id="btnEnvio"  style="background-color: #84aa1f; color: white; text-decoration: none;text-shadow: none" href="#" onclick="confirmarPedido();" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-check ui-btn-icon-right">Confirmar Domicilio</a>
+            <a style="background-color: #be1522; color: white; text-decoration: none;text-shadow: none" href="#" onclick="$('#popupPedido').popup('close');" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-right">Cancelar</a>
         </div>
 
     </div>
@@ -253,7 +254,7 @@
                 if(nombre == "" || nombre == null || nombre == undefined || direccion == "" || direccion == null || direccion == undefined || telefono == "" || telefono == null || telefono == undefined){
                     alert("Por Favor Completa los campos Obligatorios (*)");
                 }else{
-                
+                    $("#popupPedido").popup("close");
                     var $this = $(this),
                            theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
                            msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
@@ -267,7 +268,7 @@
                        textonly: textonly,
                        html: html
                    });
-                   $("#btnEnvio").attr("disabled","disabled");
+                   
                    var arreglo = new Array();
                    var idRestaurante;
                    var db = window.openDatabase(app.TABLE_NAME, "1.0", app.BD_NAME, 1000000);
@@ -308,18 +309,18 @@
                                             if (json.msj == "exito") {
                                                 alert("Tu pedido Llegará en cualquier momento ! ");
                                                 borrarCarrito();
-                                                $("#popupPedido").popup("close");
+                                                
                                                  //$("#close2").click();
 
                                             }else if (json.msj == "cerrado") {
                                                 alert("Blink está cerrado consulta los horarios de operación !");
-                                                $("#popupPedido").popup("close");
+                                                
                                                 //$("#close2").click();
                                             } else {
                                                 alert("Error, Intenta mas tarde !");
                                                 //alert(msg);
                                             }
-                                            $("#btnEnvio").removeAttr("disabled");
+                                            
                                             $.mobile.loading("hide");
                                             
                                         });
